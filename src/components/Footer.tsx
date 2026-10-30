@@ -11,6 +11,7 @@ import {
   Heart,
   ChevronRight,
   MessageSquare,
+  Award,
 } from "lucide-react";
 import { BRAND, SERVICES } from "@/lib/constants";
 
@@ -27,7 +28,7 @@ export default function Footer() {
               <div className="relative w-14 h-14 bg-white rounded-full p-1 border border-gold-300/80 shadow-subtle flex-shrink-0">
                 <Image
                   src="/images/grace-logo.jpg"
-                  alt="GRACE Multidisciplinary Therapy Centre Logo"
+                  alt="GRACE Multi-Therapy Centre and Hearing Care Logo"
                   fill
                   sizes="56px"
                   className="object-contain rounded-full p-0.5"
@@ -38,22 +39,22 @@ export default function Footer() {
                   GRACE
                 </h3>
                 <p className="text-[11px] font-semibold text-gold-400 uppercase tracking-wider mt-1">
-                  Therapy Centre &amp; Hearing Care
+                  Multi-Therapy &amp; Hearing Care
                 </p>
               </div>
             </div>
 
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed pt-1">
-              Empowering children, adolescents, and adults with evidence-based speech, occupational, behavioural, physical, educational, and auditory interventions.
+              {BRAND.brandStatement}
             </p>
 
-            <div className="pt-1 space-y-1.5">
+            <div className="pt-1 space-y-2">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-navy-900/80 border border-gold-500/30 text-xs text-gold-300 font-medium">
-                <Heart className="w-3.5 h-3.5 text-gold-400 fill-gold-400/20" />
-                <span>{BRAND.tagline}</span>
+                <Award className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
+                <span>Over 25 Years of Clinical Foundation</span>
               </div>
               <p className="text-xs text-slate-400 font-medium tracking-wide">
-                {BRAND.motto}
+                {BRAND.tagline} &bull; {BRAND.motto}
               </p>
             </div>
 
@@ -87,41 +88,41 @@ export default function Footer() {
                   <Phone className="w-4 h-4 text-gold-400" />
                 </a>
               </div>
-              <p className="text-[11px] text-slate-500 mt-2 italic">
-                *Verified social channels can be configured in client handover.
-              </p>
             </div>
           </div>
 
-          {/* Column 2: All 7 Services (4 cols) */}
-          <div className="lg:col-span-4 space-y-3.5">
+          {/* Column 2: Clinical Disciplines & Programmes (5 cols) */}
+          <div className="lg:col-span-5 space-y-3.5">
             <h4 className="text-xs font-bold uppercase tracking-wider text-gold-400 border-b border-navy-800/80 pb-2">
-              Our 7 Clinical Services
+              Clinical Disciplines &amp; Programmes
             </h4>
-            <ul className="space-y-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
               {SERVICES.map((srv) => (
-                <li key={srv.slug}>
-                  <Link
-                    href={`/services/${srv.slug}`}
-                    className="group flex items-start gap-2 text-xs sm:text-sm text-slate-300 hover:text-gold-300 transition-colors"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5 text-gold-500 flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 transition-transform" />
-                    <div>
-                      <span className="font-semibold text-slate-200 group-hover:text-gold-300">
-                        {srv.name}
-                      </span>
-                      <span className="block text-[11px] text-slate-400">
-                        {srv.shortTag}
-                      </span>
-                    </div>
-                  </Link>
-                </li>
+                <Link
+                  key={srv.slug}
+                  href={`/services/${srv.slug}`}
+                  className="group flex items-start gap-1.5 text-xs text-slate-300 hover:text-gold-300 transition-colors"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 text-gold-500 flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 transition-transform" />
+                  <span className="font-medium text-slate-200 group-hover:text-gold-300 truncate">
+                    {srv.name}
+                  </span>
+                </Link>
               ))}
-            </ul>
+            </div>
+            <div className="pt-2">
+              <Link
+                href="/services"
+                className="text-[11px] font-bold text-gold-400 hover:text-gold-300 inline-flex items-center gap-1"
+              >
+                <span>View Full Comparison &amp; Clinical Methodologies</span>
+                <ChevronRight className="w-3 h-3" />
+              </Link>
+            </div>
           </div>
 
-          {/* Column 3: Contact & Location (4 cols) */}
-          <div className="lg:col-span-4 space-y-3.5">
+          {/* Column 3: Contact & Location (3 cols) */}
+          <div className="lg:col-span-3 space-y-3.5">
             <h4 className="text-xs font-bold uppercase tracking-wider text-gold-400 border-b border-navy-800/80 pb-2">
               Clinic Location &amp; Hours
             </h4>
@@ -181,7 +182,7 @@ export default function Footer() {
                 href="/appointments"
                 className="inline-block w-full text-center py-2.5 px-4 rounded-xl bg-gold-400 hover:bg-gold-500 text-navy-950 font-bold text-xs uppercase tracking-wider transition-colors shadow-sm"
               >
-                Request an Appointment
+                Request Appointment
               </Link>
             </div>
           </div>

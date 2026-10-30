@@ -22,6 +22,7 @@ import {
   Phone,
   HelpCircle,
   Heart,
+  Users,
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -32,14 +33,25 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Activity,
   Ear,
   Laptop,
+  Users,
+  Heart,
 };
 
 export async function generateStaticParams() {
-  return SERVICES.map((s) => ({ slug: s.slug }));
+  const params: { slug: string }[] = [];
+  SERVICES.forEach((s) => {
+    params.push({ slug: s.slug });
+    if (s.aliases) {
+      s.aliases.forEach((alias) => params.push({ slug: alias }));
+    }
+  });
+  return params;
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const service = SERVICES.find((s) => s.slug === params.slug);
+  const service = SERVICES.find(
+    (s) => s.slug === params.slug || s.aliases?.includes(params.slug)
+  );
   if (!service) return { title: "Service Not Found" };
 
   return {
@@ -53,7 +65,9 @@ export default function ServiceDetailPage({
 }: {
   params: { slug: string };
 }) {
-  const service = SERVICES.find((s) => s.slug === params.slug);
+  const service = SERVICES.find(
+    (s) => s.slug === params.slug || s.aliases?.includes(params.slug)
+  );
 
   if (!service) {
     notFound();

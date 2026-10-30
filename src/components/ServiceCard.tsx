@@ -9,6 +9,8 @@ import {
   Activity,
   Ear,
   Laptop,
+  Users,
+  Heart,
   ArrowRight,
   Calendar,
 } from "lucide-react";
@@ -22,6 +24,8 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Activity,
   Ear,
   Laptop,
+  Users,
+  Heart,
 };
 
 interface ServiceCardProps {

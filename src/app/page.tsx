@@ -26,6 +26,9 @@ import FaqAccordion from "@/components/FaqAccordion";
 import MapEmbed from "@/components/MapEmbed";
 
 export default function HomePage() {
+  const primaryServices = SERVICES.filter((s) => s.isPrimaryService);
+  const additionalServices = SERVICES.filter((s) => !s.isPrimaryService);
+
   return (
     <div className="space-y-20 sm:space-y-28 overflow-hidden">
       {/* =========================================================================
@@ -48,24 +51,24 @@ export default function HomePage() {
                 </span>
               </div>
 
-              {/* Primary Headline */}
-              <h1 className="text-3xl sm:text-5xl xl:text-6xl font-serif font-bold text-navy-950 tracking-tight leading-[1.12]">
-                {BRAND.headline}
+              {/* Primary Approved Headline */}
+              <h1 className="text-3xl sm:text-5xl xl:text-6xl font-serif font-bold text-navy-950 tracking-tight leading-[1.14]">
+                Experience, Compassion and Care — Empowering Every Individual to Reach Their Potential.
               </h1>
 
-              {/* Supporting Tagline & Warm Copy */}
+              {/* Supporting Tagline & Warm Approved Copy */}
               <div className="space-y-3">
                 <p className="text-lg sm:text-xl font-medium text-gold-800 font-serif">
                   {BRAND.tagline}
                 </p>
                 <p className="text-sm sm:text-base text-charcoal-700 leading-relaxed max-w-2xl">
-                  Welcoming children, families, and individuals seeking specialized developmental therapy and hearing care in Sholinganallur, Chennai. Our licensed clinicians partner with you to nurture communication, sensory regulation, physical independence, and learning confidence.
+                  Supporting individuals to grow, learn, communicate, and lead more independent and fulfilling lives. Built on a clinical foundation of over 25 years of professional experience in Speech-Language Pathology and Paediatric Rehabilitation, our multidisciplinary team provides empathetic, evidence-based care in Sholinganallur, Chennai.
                 </p>
               </div>
 
-              {/* Core Pillars */}
+              {/* Core Supporting Words */}
               <div className="flex flex-wrap items-center gap-2 pt-1">
-                {["SUPPORT", "DEVELOP", "EMPOWER"].map((word) => (
+                {BRAND.supportingWords.map((word) => (
                   <span
                     key={word}
                     className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-navy-50 text-navy-900 font-bold text-xs tracking-wider border border-navy-100"
@@ -91,7 +94,7 @@ export default function HomePage() {
                   href="/services"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm text-navy-900 bg-white hover:bg-ivory-200 border border-ivory-border shadow-subtle transition-all duration-200"
                 >
-                  <span>Explore Our 7 Services</span>
+                  <span>Explore Our Services</span>
                 </Link>
               </div>
 
@@ -99,15 +102,15 @@ export default function HomePage() {
               <div className="pt-6 border-t border-ivory-border flex flex-wrap items-center gap-6 text-xs text-charcoal-600">
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-700 flex-shrink-0" />
-                  <span>Licensed Clinical Specialists</span>
+                  <span>25+ Years Clinical Foundation</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Users className="w-4 h-4 text-navy-800 flex-shrink-0" />
-                  <span>Family-Centred Partnership</span>
+                  <span>Paediatric &amp; Adult Care</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Heart className="w-4 h-4 text-gold-600 flex-shrink-0" />
-                  <span>Empathetic, Child-Friendly Environment</span>
+                  <span>Empathetic, Family-Centred</span>
                 </div>
               </div>
             </div>
@@ -140,10 +143,10 @@ export default function HomePage() {
                         </div>
                         <div>
                           <p className="font-serif font-bold text-navy-950 text-sm">
-                            Every Child Matters
+                            Every Individual Matters
                           </p>
                           <p className="text-xs text-charcoal-600">
-                            A Team Approach for Brighter Futures
+                            Every Ability Counts &bull; Every Step Forward Is Progress
                           </p>
                         </div>
                       </div>
@@ -151,7 +154,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* Floating Hotline Pill */}
+                {/* Floating Helpline Pill */}
                 <div className="absolute -bottom-4 -left-3 sm:-left-5 bg-navy-900 text-white px-4 py-2.5 rounded-2xl shadow-floating border border-gold-400/60 flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-navy-800 flex items-center justify-center">
                     <Phone className="w-4 h-4 text-gold-400" />
@@ -210,27 +213,27 @@ export default function HomePage() {
               </div>
 
               <p className="text-sm sm:text-base text-charcoal-700 leading-relaxed">
-                Developmental challenges are rarely isolated. A delay in speech clarity often intertwines with sensory sensitivities, motor planning, or auditory perception. At GRACE, we remove the exhaustion of visiting disjointed clinics by bringing Speech-Language Pathologists, Occupational Therapists, Behavioural Therapists, Special Educators, Paediatric Physiotherapists, and Audiologists into one collaborative team.
+                Developmental and rehabilitation challenges are multifaceted. A delay in speech clarity often intertwines with sensory sensitivities, motor coordination, cognitive processing, or auditory thresholds. Built on a clinical foundation of over 25 years of professional experience in Speech-Language Pathology and Paediatric Rehabilitation, GRACE brings Audiologists, Speech-Language Pathologists, Occupational Therapists, Behavioural Therapists, Special Educators, Physiotherapists, and Psychological Counselors into one collaborative team for children, adults, and families.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                 <div className="p-4 rounded-xl bg-ivory-50 border border-ivory-border space-y-1.5">
                   <div className="flex items-center gap-2 text-navy-900 font-bold text-sm">
                     <CheckCircle2 className="w-4 h-4 text-gold-600 flex-shrink-0" />
-                    <span>Integrated Evaluations</span>
+                    <span>Integrated Clinical Evaluations</span>
                   </div>
                   <p className="text-xs text-charcoal-600 leading-relaxed">
-                    Therapists confer collectively to align strategies rather than offering contradictory advice.
+                    Multidisciplinary clinicians confer collectively to align strategies rather than offering disjointed advice.
                   </p>
                 </div>
 
                 <div className="p-4 rounded-xl bg-ivory-50 border border-ivory-border space-y-1.5">
                   <div className="flex items-center gap-2 text-navy-900 font-bold text-sm">
                     <CheckCircle2 className="w-4 h-4 text-gold-600 flex-shrink-0" />
-                    <span>Parent Empowerment</span>
+                    <span>Family Empowerment &amp; Guidance</span>
                   </div>
                   <p className="text-xs text-charcoal-600 leading-relaxed">
-                    Practical home techniques to reinforce learning and motor milestones during daily family routines.
+                    Practical home techniques to reinforce learning, speech, and motor milestones during everyday family routines.
                   </p>
                 </div>
               </div>
@@ -240,7 +243,7 @@ export default function HomePage() {
                   href="/about"
                   className="inline-flex items-center gap-1.5 text-xs font-bold text-navy-900 hover:text-gold-700 transition-colors"
                 >
-                  <span>Learn more about our clinical philosophy</span>
+                  <span>Learn more about our mission, vision &amp; clinical foundation</span>
                   <ArrowRight className="w-3.5 h-3.5 text-gold-600" />
                 </Link>
               </div>
@@ -276,7 +279,7 @@ export default function HomePage() {
                 icon: ClipboardCheck,
                 title: "Comprehensive Assessment",
                 description:
-                  "Clinical observation, standardized screening, sensory profile reviews, or audiometric tests to map developmental strengths.",
+                  "Clinical observation, standardized screening, sensory profile reviews, or audiometric tests to map individual strengths and needs.",
               },
               {
                 step: "02",
@@ -290,7 +293,7 @@ export default function HomePage() {
                 icon: Activity,
                 title: "Multidisciplinary Therapy",
                 description:
-                  "Engaging, evidence-based sessions that systematically integrate speech, motor, behavioral, and sensory techniques.",
+                  "Engaging, evidence-based sessions that systematically integrate speech, motor, behavioral, sensory, and cognitive techniques.",
               },
               {
                 step: "04",
@@ -330,33 +333,80 @@ export default function HomePage() {
       </section>
 
       {/* =========================================================================
-          4. ALL 7 CLINICAL SERVICES WITH PHOTOGRAPHY
+          4. OUR SERVICES (6 PRIMARY DISCIPLINES IN EXACT ORDER + DOCUMENTED PROGRAMMES)
           ========================================================================= */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div className="text-center max-w-3xl mx-auto space-y-3">
           <span className="text-xs font-bold uppercase tracking-widest text-gold-700 bg-gold-50 px-3.5 py-1 rounded-full border border-gold-200">
-            Comprehensive Clinical Programs
+            Multidisciplinary Care
           </span>
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-navy-950">
-            Our 7 Specialized Therapy &amp; Care Disciplines
+            Our Services
           </h2>
           <p className="text-xs sm:text-sm text-charcoal-600 max-w-2xl mx-auto">
-            Each discipline is led by qualified therapists utilizing evidence-based clinical protocols, individualized therapy materials, and modern equipment.
+            Grounded in over 25 years of clinical foundation in Speech-Language Pathology and Paediatric Rehabilitation, our integrated disciplines support individuals across developmental, communication, and rehabilitation journeys.
           </p>
         </div>
 
-        {/* Responsive Grid with photography thumbnails */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {SERVICES.map((service) => (
-            <ServiceCard
-              key={service.slug}
-              service={service}
-              featured={service.slug === "speech-therapy" || service.slug === "hearing-testing-and-hearing-aids"}
-            />
-          ))}
+        {/* 6 Primary Services in exact order */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between border-b border-ivory-border pb-3">
+            <div>
+              <h3 className="font-serif font-bold text-xl text-navy-950">
+                Primary Clinical Disciplines
+              </h3>
+              <p className="text-xs text-charcoal-500">
+                Hearing Care &bull; Speech and Language &bull; Teletherapy &bull; Occupational &bull; Behavioural &bull; Group Therapy
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-gold-700 bg-gold-50 px-3 py-1 rounded-full border border-gold-200 hidden sm:inline-block">
+              Core Clinical Care
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {primaryServices.map((service) => (
+              <ServiceCard
+                key={service.slug}
+                service={service}
+                featured={service.slug === "hearing-care" || service.slug === "speech-and-language-therapy"}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="mt-12 text-center">
+        {/* Additional Documented Programmes */}
+        <div className="space-y-6 pt-6">
+          <div className="flex items-center justify-between border-b border-ivory-border pb-3">
+            <div>
+              <h3 className="font-serif font-bold text-xl text-navy-950">
+                Additional Documented Programmes &amp; Rehabilitation
+              </h3>
+              <p className="text-xs text-charcoal-500">
+                Special Education &bull; Physiotherapy &bull; Psychological Counselling &bull; Adult Rehabilitation &bull; Cognitive Retraining &bull; Parent Workshops
+              </p>
+            </div>
+            <Link
+              href="/services"
+              className="text-xs font-bold text-navy-900 hover:text-gold-700 flex items-center gap-1"
+            >
+              <span>Explore All Disciplines</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {additionalServices.map((service) => (
+              <ServiceCard
+                key={service.slug}
+                service={service}
+                featured={false}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10 text-center">
           <Link
             href="/services"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider text-navy-900 bg-white border border-ivory-border hover:border-gold-400 shadow-subtle hover:shadow-card transition-all"
@@ -395,15 +445,15 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span>Interactive digital speech exercises</span>
+                  <span>Interactive digital speech and language exercises</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span>Pre-consultation suitability screening</span>
+                  <span>Pre-consultation clinical suitability screening</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                  <span>No travel stress or commute fatigue</span>
+                  <span>No travel stress or commuting fatigue</span>
                 </div>
               </div>
 
@@ -500,10 +550,10 @@ export default function HomePage() {
               Start Your Journey
             </span>
             <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white leading-tight">
-              Every Child Deserves the Opportunity to Thrive
+              {BRAND.brandStatement}
             </h2>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-              Take the first step toward clearer speech, sensory calm, physical independence, or hearing clarity today.
+              Supporting individuals to grow, learn, communicate, and lead more independent and fulfilling lives. Experience, compassion, and care under one roof.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-3">
               <Link

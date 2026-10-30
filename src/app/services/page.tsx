@@ -2,15 +2,18 @@ import React from "react";
 import Link from "next/link";
 import { SERVICES, BRAND } from "@/lib/constants";
 import ServiceCard from "@/components/ServiceCard";
-import { ArrowRight, Calendar, ShieldCheck, Heart } from "lucide-react";
+import { ArrowRight, Calendar, ShieldCheck, Heart, Sparkles } from "lucide-react";
 
 export const metadata = {
-  title: "Clinical Services & Therapies",
+  title: "Our Services | Multidisciplinary Therapy & Hearing Care",
   description:
-    "Explore our 7 specialized therapy disciplines at GRACE Multidisciplinary Therapy Centre: Speech Therapy, Occupational Therapy, Behavioural Support, Special Education, Physiotherapy, Hearing Care, and Teletherapy.",
+    "Explore our multidisciplinary therapy disciplines and clinical programmes at GRACE Multi-Therapy & Hearing Care Centre: Hearing Care, Speech and Language Therapy, Teletherapy, Occupational Therapy, Behavioural Therapy, Group Therapy, and additional documented programmes in Sholinganallur, Chennai.",
 };
 
 export default function ServicesPage() {
+  const primaryServices = SERVICES.filter((s) => s.isPrimaryService);
+  const additionalServices = SERVICES.filter((s) => !s.isPrimaryService);
+
   return (
     <div className="py-12 sm:py-16 space-y-16 sm:space-y-24">
       {/* Header */}
@@ -20,18 +23,55 @@ export default function ServicesPage() {
             Specialized Care Programs
           </span>
           <h1 className="text-3xl sm:text-5xl font-serif font-bold text-navy-950 leading-tight">
-            Our 7 Clinical Therapy &amp; Hearing Services
+            Our Services
           </h1>
           <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed">
-            Each child and individual has distinct strengths and developmental requirements. We tailor evidence-based therapies across our 7 clinical disciplines to help them achieve functional independence and communication confidence.
+            Every child, family, and individual has distinct strengths and developmental goals. Grounded in a clinical foundation of over 25 years in Speech-Language Pathology and Paediatric Rehabilitation, we tailor evidence-based therapies to foster independence, communication clarity, and lifelong confidence.
           </p>
         </div>
       </section>
 
-      {/* Services Grid with Photography Thumbnails */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Services Grid: 6 Primary Disciplines in Exact Order */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="border-b border-ivory-border pb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-navy-950">
+              Primary Clinical Disciplines
+            </h2>
+            <p className="text-xs text-charcoal-600">
+              In clinical priority order: Hearing Care, Speech and Language Therapy, Teletherapy, Occupational Therapy, Behavioural Therapy, and Group Therapy.
+            </p>
+          </div>
+          <span className="text-xs font-bold uppercase tracking-wider text-gold-700 bg-gold-50 px-3 py-1 rounded-full border border-gold-200 self-start sm:self-auto">
+            Core Disciplines
+          </span>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES.map((srv) => (
+          {primaryServices.map((srv) => (
+            <ServiceCard key={srv.slug} service={srv} />
+          ))}
+        </div>
+      </section>
+
+      {/* Services Grid: Additional Documented Programmes */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="border-b border-ivory-border pb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h2 className="text-2xl font-serif font-bold text-navy-950">
+              Additional Documented Programmes &amp; Rehabilitation
+            </h2>
+            <p className="text-xs text-charcoal-600">
+              Special Education, Paediatric Physiotherapy, Psychological Counselling, Adult Rehabilitation, Cognitive Retraining, and Parent Training Workshops.
+            </p>
+          </div>
+          <span className="text-xs font-bold uppercase tracking-wider text-navy-900 bg-navy-50 px-3 py-1 rounded-full border border-navy-200 self-start sm:self-auto">
+            Specialized Programmes
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {additionalServices.map((srv) => (
             <ServiceCard key={srv.slug} service={srv} />
           ))}
         </div>
@@ -48,7 +88,7 @@ export default function ServicesPage() {
               Which Therapy Should We Begin With?
             </h2>
             <p className="text-xs sm:text-sm text-charcoal-600">
-              Reviewing the developmental focus areas below can help you understand which discipline addresses your family&apos;s primary observations.
+              Reviewing the developmental focus areas below can help you understand which discipline addresses your family&apos;s observations.
             </p>
           </div>
 
@@ -96,7 +136,7 @@ export default function ServicesPage() {
           Not Sure Where to Begin?
         </h2>
         <p className="text-xs sm:text-sm text-charcoal-600 max-w-xl mx-auto">
-          Our clinical coordinator can arrange a general developmental screening to identify whether single-discipline or combined multidisciplinary therapy is best suited for your child.
+          Our clinical coordinator can arrange a comprehensive developmental or audiometric screening to identify whether single-discipline or combined multidisciplinary care is best suited for your needs.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
           <Link

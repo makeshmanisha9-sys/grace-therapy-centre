@@ -43,6 +43,7 @@ export default function Navbar() {
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Services", href: "/services", hasDropdown: true },
+    { label: "Hearing Care", href: "/services/hearing-care" },
     { label: "Teletherapy", href: "/teletherapy" },
     { label: "Facilities", href: "/gallery" },
     { label: "FAQ", href: "/faq" },
@@ -167,37 +168,46 @@ export default function Navbar() {
 
                       {/* Services Dropdown Menu */}
                       {servicesDropdownOpen && (
-                        <div className="absolute left-0 mt-1.5 w-96 rounded-2xl bg-white shadow-cardHover border border-ivory-border p-3 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
-                          <div className="px-3 py-2 border-b border-ivory-200 mb-1">
-                            <p className="text-[11px] font-bold uppercase tracking-wider text-gold-700">
-                              Clinical Disciplines
-                            </p>
-                            <p className="text-xs text-charcoal-600">
-                              Unified therapy &amp; hearing rehabilitation
-                            </p>
+                        <div className="absolute left-0 mt-1.5 w-[560px] rounded-2xl bg-white shadow-cardHover border border-ivory-border p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                          <div className="px-2 py-1.5 border-b border-ivory-200 mb-2.5 flex items-center justify-between">
+                            <div>
+                              <p className="text-[11px] font-bold uppercase tracking-wider text-gold-700">
+                                Clinical Disciplines
+                              </p>
+                              <p className="text-xs text-charcoal-600">
+                                Unified multidisciplinary therapy &amp; hearing care
+                              </p>
+                            </div>
+                            <Link
+                              href="/services"
+                              className="text-xs font-bold text-navy-900 hover:text-gold-700 flex items-center gap-1"
+                            >
+                              <span>View All (12)</span>
+                              <ArrowRight className="w-3 h-3" />
+                            </Link>
                           </div>
 
-                          <div className="space-y-0.5">
+                          <div className="grid grid-cols-2 gap-2">
                             {SERVICES.map((srv) => (
                               <Link
                                 key={srv.slug}
                                 href={`/services/${srv.slug}`}
-                                className="flex items-center gap-3 p-2.5 rounded-xl hover:bg-navy-50/70 transition-colors group"
+                                className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-navy-50/70 transition-colors group"
                               >
-                                <div className="relative w-10 h-10 rounded-lg overflow-hidden flex-shrink-0 bg-slate-100 border border-slate-200">
+                                <div className="relative w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 bg-slate-100 border border-slate-200">
                                   <Image
                                     src={srv.imageUrl}
                                     alt={srv.name}
                                     fill
-                                    sizes="40px"
+                                    sizes="36px"
                                     className="object-cover"
                                   />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                  <div className="text-xs font-bold text-navy-950 group-hover:text-navy-800 truncate">
+                                  <div className="text-xs font-bold text-navy-950 group-hover:text-gold-800 truncate">
                                     {srv.name}
                                   </div>
-                                  <div className="text-[11px] text-charcoal-500 truncate">
+                                  <div className="text-[10px] text-charcoal-500 truncate">
                                     {srv.shortTag}
                                   </div>
                                 </div>
@@ -205,12 +215,15 @@ export default function Navbar() {
                             ))}
                           </div>
 
-                          <div className="mt-2 pt-2 border-t border-ivory-200">
+                          <div className="mt-3 pt-2.5 border-t border-ivory-200 flex items-center justify-between text-xs px-2">
+                            <span className="text-charcoal-600 font-medium text-[11px]">
+                              Foundation of 25+ years in Speech-Language Pathology &amp; Paediatric Rehabilitation
+                            </span>
                             <Link
-                              href="/services"
-                              className="flex items-center justify-center gap-1.5 py-1.5 text-xs font-bold text-navy-900 hover:text-gold-700"
+                              href="/appointments"
+                              className="font-bold text-navy-900 hover:text-gold-700 flex items-center gap-1 flex-shrink-0"
                             >
-                              <span>Explore All Services &amp; Methodologies</span>
+                              <span>Book Session</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </Link>
                           </div>

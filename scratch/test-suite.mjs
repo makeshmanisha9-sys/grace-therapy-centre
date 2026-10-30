@@ -1,4 +1,4 @@
-// Comprehensive test suite for GRACE Therapy Centre
+// Comprehensive test suite for GRACE Multi-Therapy & Hearing Care Centre
 import assert from "assert";
 
 const BASE_URL = "http://localhost:3000";
@@ -10,13 +10,23 @@ async function runTests() {
     "/",
     "/about",
     "/services",
-    "/services/speech-therapy",
+    // 6 Primary Services in exact order
+    "/services/hearing-care",
+    "/services/hearing-testing-and-hearing-aids", // backward compatibility alias
+    "/services/speech-and-language-therapy",
+    "/services/speech-therapy", // backward compatibility alias
+    "/services/teletherapy",
     "/services/occupational-therapy",
     "/services/behavioural-therapy",
+    "/services/group-therapy",
+    // 6 Additional Documented Services
     "/services/special-education",
     "/services/physiotherapy",
-    "/services/hearing-testing-and-hearing-aids",
-    "/services/teletherapy",
+    "/services/psychological-counselling",
+    "/services/adult-rehabilitation",
+    "/services/cognitive-rehabilitation",
+    "/services/parent-workshops-and-training",
+    "/services/parent-workshops", // backward compatibility alias
     "/appointments",
     "/teletherapy",
     "/contact",
@@ -28,7 +38,7 @@ async function runTests() {
     "/admin/login",
   ];
 
-  console.log("\n1. Testing HTTP GET on all website pages and routes...");
+  console.log("\n1. Testing HTTP GET on all website pages, clinical services, and aliases...");
   for (const route of routes) {
     const res = await fetch(`${BASE_URL}${route}`);
     assert.strictEqual(
@@ -59,7 +69,7 @@ async function runTests() {
   assert.ok(badAptJson.errors.email, "Missing email validation error");
   console.log("  ✓ Appointment validation correctly rejected bad input with granular field errors.");
 
-  console.log("\n3. Testing Successful Appointment Creation & Persistence...");
+  console.log("\n3. Testing Successful Appointment Creation & Dual-Persistence...");
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 2);
   const preferredDate = tomorrow.toISOString().split("T")[0];
@@ -72,7 +82,7 @@ async function runTests() {
       guardianName: "Meenakshi Subramanian",
       phone: "+91 98401 23456",
       email: "meenakshi@example.com",
-      serviceRequested: "Speech Therapy",
+      serviceRequested: "Speech and Language Therapy",
       preferredDate,
       preferredTimeSlot: "Morning (9:00 AM – 12:00 PM)",
       attendanceMode: "in-person",
@@ -93,8 +103,8 @@ async function runTests() {
       name: "Dr. Rajesh Raman",
       phone: "9840011223",
       email: "rajesh.raman@clinic.com",
-      serviceInterest: "Hearing Testing and Hearing Aids",
-      message: "Inquiring about diagnostic paediatric audiometry setup and referral options.",
+      serviceInterest: "Hearing Care",
+      message: "Inquiring about diagnostic paediatric audiometry setup and doctor referral options.",
     }),
   });
   assert.strictEqual(contactRes.status, 201, "Expected 201 Created");
