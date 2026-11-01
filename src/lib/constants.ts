@@ -38,6 +38,8 @@ export const BRAND = {
   email: "gracemultitherapycenter@gmail.com",
   address: "Door #174, Sai Garden, Villa A, Village High Road, Sholinganallur, Chennai – 600119",
   shortAddress: "Sholinganallur, Chennai – 600119",
+  domain: "gracemultitherapyandhearingcarecentre.com",
+  websiteUrl: "https://www.gracemultitherapyandhearingcarecentre.com",
   referenceUrl: "https://grace-hearing-care.surge.sh/",
   mapsQueryUrl:
     "https://www.google.com/maps/search/?api=1&query=Door+%23174%2C+Sai+Garden%2C+Villa+A%2C+Village+High+Road%2C+Sholinganallur%2C+Chennai%2C+Tamil+Nadu+600119",

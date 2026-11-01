@@ -1,7 +1,8 @@
 import { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://grace-therapy-centre.local";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.gracemultitherapyandhearingcarecentre.com";
 
   return {
     rules: [

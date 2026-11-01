@@ -6,7 +6,9 @@ import { BRAND } from "@/lib/constants";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://grace-therapy-centre.local"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://www.gracemultitherapyandhearingcarecentre.com"
+  ),
   title: {
     default: "GRACE Multidisciplinary Therapy Centre and Hearing Care | Chennai",
     template: "%s | GRACE Therapy Centre Chennai",
