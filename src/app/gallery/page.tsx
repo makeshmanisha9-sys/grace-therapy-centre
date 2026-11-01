@@ -133,8 +133,9 @@ export default function GalleryPage() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" />
-                  <span className="absolute bottom-3 left-3 text-[11px] font-bold text-white bg-navy-900/80 px-2 py-0.5 rounded">
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
+                  <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
+                  <span className="absolute bottom-3 left-3 text-[11px] font-bold text-gold-300 bg-navy-950/90 border border-gold-400/40 px-2 py-0.5 rounded shadow-sm">
                     Zone 0{idx + 1}
                   </span>
                 </div>

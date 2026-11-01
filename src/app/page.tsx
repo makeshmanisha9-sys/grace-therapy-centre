@@ -51,17 +51,17 @@ export default function HomePage() {
                 </span>
               </div>
 
-              {/* Primary Approved Headline */}
-              <h1 className="text-3xl sm:text-5xl xl:text-6xl font-serif font-bold text-navy-950 tracking-tight leading-[1.14]">
+              {/* Primary Approved Headline - Medium font size */}
+              <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-serif font-bold text-navy-950 tracking-tight leading-snug">
                 Experience, Compassion and Care — Empowering Every Individual to Reach Their Potential.
               </h1>
 
               {/* Supporting Tagline & Warm Approved Copy */}
               <div className="space-y-3">
-                <p className="text-lg sm:text-xl font-medium text-gold-800 font-serif">
+                <p className="text-base sm:text-lg font-medium text-gold-800 font-serif">
                   {BRAND.tagline}
                 </p>
-                <p className="text-sm sm:text-base text-charcoal-700 leading-relaxed max-w-2xl">
+                <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed max-w-2xl">
                   Supporting individuals to grow, learn, communicate, and lead more independent and fulfilling lives. Built on a clinical foundation of over 25 years of professional experience in Speech-Language Pathology and Paediatric Rehabilitation, our multidisciplinary team provides empathetic, evidence-based care in Sholinganallur, Chennai.
                 </p>
               </div>
@@ -118,11 +118,11 @@ export default function HomePage() {
             {/* Right Editorial Visual (5 cols) — High Quality Authentic Healthcare Photography */}
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Background ambient glow */}
-                <div className="absolute -inset-3 bg-gradient-to-tr from-gold-300/30 via-navy-100/30 to-gold-200/20 rounded-3xl blur-xl" />
+                {/* Background ambient glow matching theme */}
+                <div className="absolute -inset-3 bg-gradient-to-tr from-gold-300/35 via-navy-100/30 to-gold-200/25 rounded-3xl blur-xl" />
 
-                {/* Primary Editorial Image Container */}
-                <div className="relative rounded-3xl overflow-hidden shadow-cardHover border border-ivory-border bg-white">
+                {/* Primary Editorial Image Container with Theme Border & Warm Shadow */}
+                <div className="relative rounded-3xl overflow-hidden shadow-cardHover border-2 border-gold-300/70 bg-white ring-1 ring-gold-400/20">
                   <div className="relative w-full h-[400px] sm:h-[480px]">
                     <Image
                       src="/images/hero-therapy.jpg"
@@ -132,11 +132,14 @@ export default function HomePage() {
                       className="object-cover object-center"
                       priority
                     />
-                    {/* Subtle soft gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
+                    {/* Subtle soft gradient overlay matching navy brand theme */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/75 via-navy-950/20 to-transparent" />
+
+                    {/* Fine gold hairline border at base of image */}
+                    <div className="absolute bottom-0 inset-x-0 h-[3px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-80" />
 
                     {/* Integrated floating story badge */}
-                    <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-ivory-border shadow-md">
+                    <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-gold-300/80 shadow-md">
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-700 flex-shrink-0">
                           <Heart className="w-5 h-5 fill-gold-400/20 text-gold-600" />
@@ -185,7 +188,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Image (5 cols) */}
             <div className="lg:col-span-5 relative">
-              <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden shadow-subtle border border-ivory-border">
+              <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden shadow-card border-2 border-gold-300/50 bg-slate-100">
                 <Image
                   src="/images/about-multidisciplinary.jpg"
                   alt="Modern, welcoming therapy and consultation space at GRACE Centre"
@@ -193,10 +196,14 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 100vw, 450px"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 text-white text-xs bg-navy-950/70 backdrop-blur-sm p-3 rounded-xl border border-navy-800">
-                  <span className="font-semibold block text-gold-300">Sholinganallur Clinic</span>
-                  Dedicated consultation rooms and sound-treated testing suites.
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 text-white text-xs bg-navy-950/90 backdrop-blur-md p-3.5 rounded-xl border border-gold-400/40 shadow-sm flex items-start gap-2.5">
+                  <MapPin className="w-4 h-4 text-gold-400 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <span className="font-bold block text-gold-300">Sholinganallur Therapy Facility</span>
+                    <span className="text-[11px] text-slate-200">Acoustically treated cabins, sensory gym &amp; clinical suites</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -477,7 +484,7 @@ export default function HomePage() {
 
             {/* Right Photography (5 cols) */}
             <div className="lg:col-span-5 relative">
-              <div className="relative w-full h-72 sm:h-84 rounded-2xl overflow-hidden shadow-card border border-ivory-border bg-slate-100">
+              <div className="relative w-full h-72 sm:h-84 rounded-2xl overflow-hidden shadow-card border-2 border-gold-300/50 bg-slate-100">
                 <Image
                   src="/images/teletherapy.jpg"
                   alt="Therapist conducting interactive virtual consultation on laptop screen"
@@ -485,7 +492,15 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 100vw, 450px"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 bg-navy-950/90 backdrop-blur-md p-3.5 rounded-xl border border-gold-400/40 text-white text-xs flex items-center gap-2.5 shadow-sm">
+                  <Laptop className="w-4 h-4 text-gold-400 flex-shrink-0" />
+                  <div>
+                    <span className="font-bold block text-gold-300">Virtual Therapy Platform</span>
+                    <span className="text-[11px] text-slate-300">Secure, therapist-guided video care from home</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

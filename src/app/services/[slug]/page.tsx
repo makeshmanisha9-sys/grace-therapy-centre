@@ -132,7 +132,7 @@ export default function ServiceDetailPage({
 
             {/* Right Photography (5 cols) */}
             <div className="lg:col-span-5 relative">
-              <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden shadow-subtle border border-ivory-border bg-slate-100">
+              <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden shadow-card border-2 border-gold-300/60 bg-slate-100">
                 <Image
                   src={service.imageUrl}
                   alt={`${service.name} clinical session at GRACE Centre`}
@@ -141,9 +141,10 @@ export default function ServiceDetailPage({
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3 rounded-xl border border-ivory-border text-xs text-navy-950 font-semibold flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-700 flex-shrink-0" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 bg-navy-950/90 backdrop-blur-md p-3 rounded-xl border border-gold-400/40 text-xs text-white font-medium flex items-center gap-2 shadow-sm">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                   <span>Evidence-Based Paediatric &amp; Adult Clinical Care</span>
                 </div>
               </div>

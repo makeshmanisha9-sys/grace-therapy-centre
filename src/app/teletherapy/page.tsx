@@ -61,7 +61,7 @@ export default function TeletherapyPage() {
           </div>
 
           <div className="lg:col-span-5 relative">
-            <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden shadow-subtle border border-ivory-border bg-slate-100">
+            <div className="relative w-full h-72 sm:h-96 rounded-2xl overflow-hidden shadow-card border-2 border-gold-300/60 bg-slate-100">
               <Image
                 src="/images/teletherapy.jpg"
                 alt="Therapist conducting virtual video consultation on laptop"
@@ -70,7 +70,12 @@ export default function TeletherapyPage() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/50 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-80" />
+              <div className="absolute bottom-4 left-4 right-4 bg-navy-950/90 backdrop-blur-md p-3 rounded-xl border border-gold-400/40 text-xs text-white font-medium flex items-center gap-2 shadow-sm">
+                <Laptop className="w-4 h-4 text-gold-400 flex-shrink-0" />
+                <span>Secure Clinician Video Consultations</span>
+              </div>
             </div>
           </div>
         </div>

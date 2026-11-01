@@ -55,8 +55,11 @@ export default function ServiceCard({ service, featured = false }: ServiceCardPr
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          {/* Subtle gradient vignette at bottom of image */}
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent opacity-80" />
+          {/* Subtle gradient vignette at bottom of image matching navy brand theme */}
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent opacity-90" />
+          
+          {/* Theme Gold hairline separation */}
+          <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400/60 to-transparent" />
 
           {/* Floating Icon Badge & Online Pill */}
           <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between">

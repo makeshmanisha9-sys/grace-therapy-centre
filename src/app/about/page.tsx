@@ -33,7 +33,7 @@ export default function AboutPage() {
           <span className="text-xs font-bold uppercase tracking-widest text-gold-700 bg-gold-50 px-3.5 py-1 rounded-full border border-gold-200">
             About Our Centre
           </span>
-          <h1 className="text-3xl sm:text-5xl font-serif font-bold text-navy-950 leading-tight">
+          <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-serif font-bold text-navy-950 leading-snug">
             {BRAND.headline}
           </h1>
           <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed font-serif text-gold-900">
@@ -137,7 +137,7 @@ export default function AboutPage() {
 
             {/* Right Photography (5 cols) */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-2xl overflow-hidden border border-ivory-border shadow-subtle h-80 sm:h-96 bg-slate-100">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-gold-300/60 shadow-card h-80 sm:h-96 bg-slate-100">
                 <Image
                   src="/images/about-multidisciplinary.jpg"
                   alt="Multidisciplinary clinical consultation area at GRACE Centre"
@@ -145,10 +145,11 @@ export default function AboutPage() {
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm p-3.5 rounded-xl border border-ivory-border text-xs text-navy-950 font-medium">
-                  <span className="block font-bold text-navy-950">{BRAND.name}</span>
-                  <span className="text-charcoal-600 block text-[11px] mt-0.5">{BRAND.address}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400 to-transparent opacity-80" />
+                <div className="absolute bottom-4 left-4 right-4 bg-navy-950/90 backdrop-blur-md p-3.5 rounded-xl border border-gold-400/40 text-white text-xs">
+                  <span className="block font-bold text-gold-300">{BRAND.name}</span>
+                  <span className="text-slate-300 block text-[11px] mt-0.5">{BRAND.address}</span>
                 </div>
               </div>
             </div>
@@ -225,7 +226,7 @@ export default function AboutPage() {
                 className="bg-white rounded-2xl border border-ivory-border overflow-hidden shadow-subtle flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative w-full h-36 bg-slate-100">
+                  <div className="relative w-full h-36 bg-slate-100 overflow-hidden">
                     <Image
                       src={srv.imageUrl}
                       alt={srv.name}
@@ -233,8 +234,9 @@ export default function AboutPage() {
                       sizes="(max-width: 768px) 100vw, 350px"
                       className="object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-transparent to-transparent" />
-                    <span className="absolute bottom-2.5 left-3 text-[11px] font-bold text-white bg-navy-900/80 px-2 py-0.5 rounded">
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
+                    <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
+                    <span className="absolute bottom-2.5 left-3 text-[11px] font-bold text-gold-300 bg-navy-950/90 border border-gold-400/40 px-2 py-0.5 rounded shadow-sm">
                       Discipline {String(idx + 1).padStart(2, "0")}
                     </span>
                   </div>
