@@ -126,7 +126,7 @@ export default function HomePage() {
                   <div className="relative w-full h-[400px] sm:h-[480px]">
                     <Image
                       src="/images/hero-therapy.jpg"
-                      alt="Caring paediatric therapist engaging in developmental play and speech session with child"
+                      alt="Qualified paediatric therapist interacting warmly with a young child during developmental play and speech session"
                       fill
                       sizes="(max-width: 768px) 100vw, 550px"
                       className="object-cover object-center"
@@ -191,7 +191,7 @@ export default function HomePage() {
               <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden shadow-card border-2 border-gold-300/50 bg-slate-100">
                 <Image
                   src="/images/about-multidisciplinary.jpg"
-                  alt="Modern, welcoming therapy and consultation space at GRACE Centre"
+                  alt="Therapist guiding a child in multidisciplinary development and sensory integration therapy"
                   fill
                   sizes="(max-width: 768px) 100vw, 450px"
                   className="object-cover"

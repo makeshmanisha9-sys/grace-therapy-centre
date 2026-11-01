@@ -140,7 +140,7 @@ export default function AboutPage() {
               <div className="relative rounded-2xl overflow-hidden border-2 border-gold-300/60 shadow-card h-80 sm:h-96 bg-slate-100">
                 <Image
                   src="/images/about-multidisciplinary.jpg"
-                  alt="Multidisciplinary clinical consultation area at GRACE Centre"
+                  alt="Multidisciplinary child development and sensory integration therapy session at GRACE Centre"
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
