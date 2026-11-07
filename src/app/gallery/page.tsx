@@ -5,9 +5,9 @@ import { Camera, Calendar, Info, Heart, ArrowRight, ShieldCheck } from "lucide-r
 import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: "Centre Facilities & Gallery | Verified Visuals",
+  title: `Centre Facilities & Visuals | ${BRAND.name}`,
   description:
-    "View the visual identity, modern clinic practice zones, and dedicated therapy environments of GRACE Multidisciplinary Therapy Centre in Sholinganallur, Chennai.",
+    `View the clinical practice zones, therapy environments, and verified brand identity of ${BRAND.name} in Sholinganallur, Chennai.`,
 };
 
 export default function GalleryPage() {
@@ -67,7 +67,7 @@ export default function GalleryPage() {
           Centre Facilities &amp; Visuals
         </h1>
         <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed">
-          Explore the clinical environments and visual identity of GRACE Multidisciplinary Therapy Centre. In accordance with healthcare integrity, our imagery is curated to accurately represent our clinical disciplines and practice zones.
+          Explore the clinical environments and visual identity of {BRAND.name}. In accordance with healthcare integrity, our imagery is curated to accurately represent our clinical disciplines and practice zones.
         </p>
       </div>
 
@@ -93,7 +93,7 @@ export default function GalleryPage() {
           <div className="relative w-full h-64 bg-ivory-50 rounded-2xl border border-ivory-border p-6 flex items-center justify-center overflow-hidden">
             <Image
               src="/images/grace-logo.jpg"
-              alt="Official GRACE Multidisciplinary Therapy Centre Logo"
+              alt={`Official ${BRAND.name} Logo`}
               fill
               className="object-contain p-4"
             />

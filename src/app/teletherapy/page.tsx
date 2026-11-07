@@ -18,9 +18,9 @@ import {
 import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: "Teletherapy Consultations | Remote Care Guidelines",
+  title: `Teletherapy Consultations | ${BRAND.name}`,
   description:
-    "Learn how Teletherapy works at GRACE Therapy Centre. Remote speech therapy and family coaching, technology checklist, privacy guidelines, and session requests in Chennai.",
+    `Learn how Teletherapy works at ${BRAND.name}. Remote speech therapy, developmental parent coaching, technology checklist, and secure video consultations.`,
 };
 
 export default function TeletherapyPage() {

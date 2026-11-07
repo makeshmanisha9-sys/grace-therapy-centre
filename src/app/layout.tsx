@@ -10,40 +10,40 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.gracemultitherapyandhearingcarecentre.com"
   ),
   title: {
-    default: "GRACE Multidisciplinary Therapy Centre and Hearing Care | Chennai",
-    template: "%s | GRACE Therapy Centre Chennai",
+    default: "Grace Multi-Therapy & Hearing Care Centre | Chennai",
+    template: "%s | Grace Multi-Therapy & Hearing Care Centre",
   },
   description:
-    "Specialized paediatric & adult developmental care in Sholinganallur, Chennai. Speech Therapy, Occupational Therapy, Behavioural Support, Special Education, Physiotherapy, and Advanced Hearing Testing & Digital Hearing Aids.",
+    "Grace Multi-Therapy & Hearing Care Centre in Sholinganallur, Chennai. Speech Therapy, Occupational Therapy, Behavioural Support, Special Education, Physiotherapy, Early Intervention, Adult Rehabilitation, and Hearing Care.",
   keywords: [
-    "GRACE therapy centre Chennai",
+    "Grace Multi-Therapy & Hearing Care Centre",
     "speech therapy Sholinganallur",
     "occupational therapy Chennai",
+    "hearing care Chennai",
     "hearing aid centre Chennai",
     "behavioural therapy children",
     "special education Chennai",
     "paediatric physiotherapy Chennai",
-    "hearing test Mandaveli Sholinganallur",
-    "teletherapy speech therapy",
-    "autism therapy centre Chennai",
+    "early intervention Chennai",
+    "adult rehabilitation Chennai",
   ],
-  authors: [{ name: "GRACE Multidisciplinary Therapy Centre" }],
+  authors: [{ name: "Grace Multi-Therapy & Hearing Care Centre" }],
   icons: {
     icon: "/images/grace-logo.jpg",
     apple: "/images/grace-logo.jpg",
   },
   openGraph: {
-    title: "GRACE Multidisciplinary Therapy Centre and Hearing Care",
+    title: "Grace Multi-Therapy & Hearing Care Centre",
     description:
       "Better Communication • Brighter Future. Multidisciplinary Speech, Occupational, Behavioural, Physiotherapy, and Hearing Care in Chennai.",
     url: "/",
-    siteName: "GRACE Therapy Centre",
+    siteName: "Grace Multi-Therapy & Hearing Care Centre",
     images: [
       {
         url: "/images/grace-logo.jpg",
         width: 800,
         height: 800,
-        alt: "GRACE Multidisciplinary Therapy Centre & Hearing Care",
+        alt: "Grace Multi-Therapy & Hearing Care Centre",
       },
     ],
     locale: "en_IN",

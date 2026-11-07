@@ -23,6 +23,7 @@ import {
   HelpCircle,
   Heart,
   Users,
+  Sparkles,
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ElementType> = {
@@ -35,6 +36,7 @@ const ICON_MAP: Record<string, React.ElementType> = {
   Laptop,
   Users,
   Heart,
+  Sparkles,
 };
 
 export async function generateStaticParams() {
@@ -55,7 +57,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!service) return { title: "Service Not Found" };
 
   return {
-    title: `${service.name} | GRACE Therapy Centre Chennai`,
+    title: `${service.name} | ${BRAND.name}`,
     description: service.shortDescription,
   };
 }
@@ -109,6 +111,26 @@ export default function ServiceDetailPage({
               <p className="text-sm sm:text-base text-charcoal-700 leading-relaxed">
                 {service.fullDescription}
               </p>
+
+              {service.slug === "hearing-care" && (
+                <div className="p-4 rounded-xl bg-gold-50 border border-gold-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-bold text-navy-950">
+                      Explore our Dedicated Hearing Care Standalone Page
+                    </p>
+                    <p className="text-[11px] text-charcoal-600 mt-0.5">
+                      Pure Tone Audiometry (PTA), Screening, and Digital Hearing Aid Selection, Fitting &amp; Support.
+                    </p>
+                  </div>
+                  <Link
+                    href="/hearing-care"
+                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-navy-900 text-white font-bold text-xs flex-shrink-0 hover:bg-navy-800 transition-colors shadow-sm"
+                  >
+                    <span>Visit Hearing Care Page</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-gold-400" />
+                  </Link>
+                </div>
+              )}
 
               {/* Direct Booking CTA */}
               <div className="pt-3 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">

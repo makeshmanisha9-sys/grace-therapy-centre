@@ -13,9 +13,9 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Contact Us & Clinic Directions | Sholinganallur, Chennai",
+  title: `Contact Us & Clinic Directions | ${BRAND.name}`,
   description:
-    "Get in touch with GRACE Multidisciplinary Therapy Centre and Hearing Care. Located at Door #174, Sai Garden, Villa A, Village High Road, Sholinganallur, Chennai 600119. Phone: +91 8220007614.",
+    `Get in touch with ${BRAND.name}. Located at ${BRAND.address}. Phone: ${BRAND.phoneClean}.`,
 };
 
 export default function ContactPage() {
@@ -44,7 +44,7 @@ export default function ContactPage() {
               Direct Contact Information
             </span>
             <h2 className="font-serif font-bold text-2xl text-white">
-              GRACE Multidisciplinary Therapy Centre &amp; Hearing Care
+              {BRAND.name}
             </h2>
 
             <div className="space-y-4 text-xs sm:text-sm">

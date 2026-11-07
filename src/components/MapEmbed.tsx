@@ -38,7 +38,7 @@ export default function MapEmbed() {
       {/* Embedded Map */}
       <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner">
         <iframe
-          title="GRACE Multidisciplinary Therapy Centre Location Map"
+          title={`${BRAND.name} Location Map`}
           src={embedUrl}
           width="100%"
           height="100%"

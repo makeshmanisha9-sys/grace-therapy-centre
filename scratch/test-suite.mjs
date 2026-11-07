@@ -10,7 +10,8 @@ async function runTests() {
     "/",
     "/about",
     "/services",
-    // 6 Primary Services in exact order
+    "/hearing-care", // Dedicated standalone Hearing Care page
+    // Core Clinical Services
     "/services/hearing-care",
     "/services/hearing-testing-and-hearing-aids", // backward compatibility alias
     "/services/speech-and-language-therapy",
@@ -19,7 +20,8 @@ async function runTests() {
     "/services/occupational-therapy",
     "/services/behavioural-therapy",
     "/services/group-therapy",
-    // 6 Additional Documented Services
+    "/services/early-intervention", // Client Early Intervention service
+    // Additional Documented Services
     "/services/special-education",
     "/services/physiotherapy",
     "/services/psychological-counselling",

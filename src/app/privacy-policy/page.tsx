@@ -4,9 +4,9 @@ import { AlertTriangle, ShieldCheck, ArrowLeft } from "lucide-react";
 import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: "Privacy Policy (Draft) | GRACE Therapy Centre",
+  title: `Privacy Policy (Draft) | ${BRAND.name}`,
   description:
-    "Editable draft privacy policy outlining data collection, appointment handling, and contact confidentiality for GRACE Multidisciplinary Therapy Centre.",
+    `Editable draft privacy policy outlining data collection, appointment handling, and contact confidentiality for ${BRAND.name}.`,
 };
 
 export default function PrivacyPolicyPage() {
@@ -38,7 +38,7 @@ export default function PrivacyPolicyPage() {
           <strong className="block font-bold text-sm text-amber-950 mb-1">
             Important Notice for Website Administrators &amp; Legal Review:
           </strong>
-          This document is an editable template draft provided for website deployment. It has not been reviewed by a legal attorney and does not constitute formal legal advice. The management of GRACE Multidisciplinary Therapy Centre and Hearing Care should review and adjust this draft with certified legal counsel to reflect applicable healthcare privacy regulations.
+          This document is an editable template draft provided for website deployment. It has not been reviewed by a legal attorney and does not constitute formal legal advice. The management of {BRAND.name} should review and adjust this draft with certified legal counsel to reflect applicable healthcare privacy regulations.
         </div>
       </div>
 
@@ -69,7 +69,7 @@ export default function PrivacyPolicyPage() {
             2. How We Use Collected Data
           </h2>
           <p>
-            Information submitted via this website is used solely by authorized staff at GRACE Multidisciplinary Therapy Centre to:
+            Information submitted via this website is used solely by authorized staff at {BRAND.name} to:
           </p>
           <ul className="list-disc pl-6 space-y-1 text-xs sm:text-sm text-charcoal-800">
             <li>Review clinical coordinator schedules and therapist availability.</li>
@@ -130,7 +130,7 @@ export default function PrivacyPolicyPage() {
             If you have questions about this draft policy or our data management procedures, please contact:
           </p>
           <div className="text-xs text-navy-950 font-medium space-y-1 bg-warm-white p-4 rounded-xl border border-warm-border">
-            <p><strong>GRACE Multidisciplinary Therapy Centre and Hearing Care</strong></p>
+            <p><strong>{BRAND.name}</strong></p>
             <p>{BRAND.address}</p>
             <p>Email: {BRAND.email}</p>
             <p>Phone: {BRAND.phone}</p>

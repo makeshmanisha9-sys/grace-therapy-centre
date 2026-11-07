@@ -13,9 +13,9 @@ import {
   X,
   ChevronDown,
   Calendar,
-  Sparkles,
   ArrowRight,
   ShieldCheck,
+  Ear,
 } from "lucide-react";
 import { BRAND, SERVICES } from "@/lib/constants";
 
@@ -39,28 +39,30 @@ export default function Navbar() {
     setServicesDropdownOpen(false);
   }, [pathname]);
 
+  // Clean, uncluttered navigation without duplicates.
+  // Teletherapy excluded from top menu per client feedback; dedicated Hearing Care page included.
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
     { label: "Services", href: "/services", hasDropdown: true },
-    { label: "Hearing Care", href: "/services/hearing-care" },
-    { label: "Teletherapy", href: "/teletherapy" },
-    { label: "Facilities", href: "/gallery" },
-    { label: "FAQ", href: "/faq" },
+    { label: "Hearing Care", href: "/hearing-care" },
     { label: "Contact", href: "/contact" },
   ];
 
+  // Core clinical services for dropdown (excluding Teletherapy per client instruction)
+  const menuServices = SERVICES.filter((s) => s.slug !== "teletherapy");
+
   return (
     <header className="sticky top-0 z-50 w-full transition-all duration-300">
-      {/* Top utility bar - cohesive midnight blue with fine gold hairline */}
+      {/* Top Utility Information Bar */}
       <div className="bg-gradient-to-r from-navy-950 via-navy-900 to-navy-950 text-slate-300 text-[11px] sm:text-xs py-2 px-4 border-b border-navy-800/80">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          {/* Left contact info */}
+          {/* Contact Details */}
           <div className="flex flex-wrap items-center gap-4 sm:gap-6">
             <a
               href={`tel:${BRAND.phoneClean}`}
               className="inline-flex items-center gap-1.5 text-slate-200 hover:text-gold-300 transition-colors font-medium tracking-wide"
-              aria-label={`Call us at ${BRAND.phone}`}
+              aria-label={`Call ${BRAND.name} at ${BRAND.phone}`}
             >
               <Phone className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
               <span>{BRAND.phone}</span>
@@ -68,18 +70,18 @@ export default function Navbar() {
             <a
               href={`mailto:${BRAND.email}`}
               className="hidden md:inline-flex items-center gap-1.5 text-slate-300 hover:text-gold-300 transition-colors"
-              aria-label={`Email us at ${BRAND.email}`}
+              aria-label={`Email ${BRAND.email}`}
             >
               <Mail className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
               <span className="truncate max-w-[220px]">{BRAND.email}</span>
             </a>
             <span className="hidden lg:inline-flex items-center gap-1.5 text-slate-300">
               <MapPin className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
-              <span>Sholinganallur, Chennai - 600119</span>
+              <span>{BRAND.shortAddress}</span>
             </span>
           </div>
 
-          {/* Right Hours & Staff Portal */}
+          {/* Operating Hours & Staff Portal */}
           <div className="flex items-center gap-4">
             <span className="hidden sm:inline-flex items-center gap-1.5 text-slate-300">
               <Clock className="w-3.5 h-3.5 text-gold-400 flex-shrink-0" />
@@ -96,7 +98,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Main navigation bar - luminous warm ivory backdrop with subtle glass blur */}
+      {/* Main Navigation Bar */}
       <div
         className={`w-full transition-all duration-300 ${
           scrolled
@@ -106,16 +108,16 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            {/* Logo in original proportions */}
+            {/* Logo in original proportions with consistent official branding */}
             <Link
               href="/"
               className="flex items-center gap-3.5 group focus:outline-none focus:ring-2 focus:ring-gold-500 rounded-xl p-1"
-              aria-label="GRACE Multidisciplinary Therapy Centre and Hearing Care Home"
+              aria-label={`${BRAND.name} Home`}
             >
               <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 bg-white rounded-full p-1 shadow-subtle border border-gold-300/80 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/images/grace-logo.jpg"
-                  alt="GRACE Therapy Centre Logo"
+                  alt={`${BRAND.name} Logo`}
                   fill
                   sizes="56px"
                   className="object-contain rounded-full p-0.5"
@@ -127,7 +129,7 @@ export default function Navbar() {
                   GRACE
                 </span>
                 <span className="text-[10px] sm:text-[11px] font-semibold text-gold-700 tracking-wider uppercase mt-1 leading-tight">
-                  Multidisciplinary Therapy &amp; Hearing Care
+                  Multi-Therapy &amp; Hearing Care Centre
                 </span>
               </div>
             </Link>
@@ -172,26 +174,30 @@ export default function Navbar() {
                           <div className="px-2 py-1.5 border-b border-ivory-200 mb-2.5 flex items-center justify-between">
                             <div>
                               <p className="text-[11px] font-bold uppercase tracking-wider text-gold-700">
-                                Clinical Disciplines
+                                Clinical Disciplines &amp; Programmes
                               </p>
                               <p className="text-xs text-charcoal-600">
-                                Unified multidisciplinary therapy &amp; hearing care
+                                Comprehensive care tailored to individual developmental needs
                               </p>
                             </div>
                             <Link
                               href="/services"
                               className="text-xs font-bold text-navy-900 hover:text-gold-700 flex items-center gap-1"
                             >
-                              <span>View All (12)</span>
+                              <span>Explore All</span>
                               <ArrowRight className="w-3 h-3" />
                             </Link>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-2">
-                            {SERVICES.map((srv) => (
+                          <div className="grid grid-cols-2 gap-2 max-h-[380px] overflow-y-auto pr-1">
+                            {menuServices.map((srv) => (
                               <Link
                                 key={srv.slug}
-                                href={`/services/${srv.slug}`}
+                                href={
+                                  srv.slug === "hearing-care"
+                                    ? "/hearing-care"
+                                    : `/services/${srv.slug}`
+                                }
                                 className="flex items-center gap-2.5 p-2 rounded-xl hover:bg-navy-50/70 transition-colors group"
                               >
                                 <div className="relative w-9 h-9 rounded-lg overflow-hidden flex-shrink-0 bg-slate-100 border border-slate-200">
@@ -217,7 +223,7 @@ export default function Navbar() {
 
                           <div className="mt-3 pt-2.5 border-t border-ivory-200 flex items-center justify-between text-xs px-2">
                             <span className="text-charcoal-600 font-medium text-[11px]">
-                              Foundation of 25+ years in Speech-Language Pathology &amp; Paediatric Rehabilitation
+                              Clinical Foundation of Over 25 Years
                             </span>
                             <Link
                               href="/appointments"
@@ -254,7 +260,7 @@ export default function Navbar() {
               <a
                 href={`tel:${BRAND.phoneClean}`}
                 className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-navy-900 bg-white border border-ivory-border hover:border-gold-400 rounded-xl transition-all shadow-subtle hover:shadow-sm"
-                aria-label="Direct Phone Consultation"
+                aria-label="Call Clinical Desk"
               >
                 <Phone className="w-3.5 h-3.5 text-gold-600" />
                 <span>Call Desk</span>
@@ -310,10 +316,14 @@ export default function Navbar() {
 
                   {link.hasDropdown && (
                     <div className="pl-4 py-1.5 space-y-1 border-l-2 border-gold-400 ml-3 my-1">
-                      {SERVICES.map((s) => (
+                      {menuServices.map((s) => (
                         <Link
                           key={s.slug}
-                          href={`/services/${s.slug}`}
+                          href={
+                            s.slug === "hearing-care"
+                              ? "/hearing-care"
+                              : `/services/${s.slug}`
+                          }
                           className="block px-2 py-1.5 text-xs font-medium text-charcoal-700 hover:text-navy-900"
                         >
                           • {s.name}

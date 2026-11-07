@@ -18,6 +18,9 @@ import { BRAND, SERVICES } from "@/lib/constants";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  // Exclude teletherapy from primary clinical list; show direct link in footer utility
+  const footerServices = SERVICES.filter((s) => s.slug !== "teletherapy");
+
   return (
     <footer className="bg-gradient-to-b from-navy-950 via-[#0A1E35] to-navy-950 text-slate-300 pt-16 pb-12 border-t border-gold-400/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +31,7 @@ export default function Footer() {
               <div className="relative w-14 h-14 bg-white rounded-full p-1 border border-gold-300/80 shadow-subtle flex-shrink-0">
                 <Image
                   src="/images/grace-logo.jpg"
-                  alt="GRACE Multi-Therapy Centre and Hearing Care Logo"
+                  alt={`${BRAND.name} Logo`}
                   fill
                   sizes="56px"
                   className="object-contain rounded-full p-0.5"
@@ -39,7 +42,7 @@ export default function Footer() {
                   GRACE
                 </h3>
                 <p className="text-[11px] font-semibold text-gold-400 uppercase tracking-wider mt-1">
-                  Multi-Therapy &amp; Hearing Care
+                  Multi-Therapy &amp; Hearing Care Centre
                 </p>
               </div>
             </div>
@@ -69,21 +72,21 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-9 h-9 rounded-xl bg-navy-900 border border-navy-800 hover:border-gold-400 flex items-center justify-center text-slate-200 hover:text-gold-300 transition-colors"
-                  aria-label="WhatsApp Chat with GRACE Therapy Centre"
+                  aria-label={`WhatsApp Chat with ${BRAND.name}`}
                 >
                   <MessageSquare className="w-4 h-4 text-emerald-400" />
                 </a>
                 <a
                   href={`mailto:${BRAND.email}`}
                   className="w-9 h-9 rounded-xl bg-navy-900 border border-navy-800 hover:border-gold-400 flex items-center justify-center text-slate-200 hover:text-gold-300 transition-colors"
-                  aria-label="Email GRACE Therapy Centre"
+                  aria-label={`Email ${BRAND.name}`}
                 >
                   <Mail className="w-4 h-4 text-gold-400" />
                 </a>
                 <a
                   href={`tel:${BRAND.phoneClean}`}
                   className="w-9 h-9 rounded-xl bg-navy-900 border border-navy-800 hover:border-gold-400 flex items-center justify-center text-slate-200 hover:text-gold-300 transition-colors"
-                  aria-label="Call GRACE Therapy Centre"
+                  aria-label={`Call ${BRAND.name}`}
                 >
                   <Phone className="w-4 h-4 text-gold-400" />
                 </a>
@@ -97,10 +100,14 @@ export default function Footer() {
               Clinical Disciplines &amp; Programmes
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2">
-              {SERVICES.map((srv) => (
+              {footerServices.map((srv) => (
                 <Link
                   key={srv.slug}
-                  href={`/services/${srv.slug}`}
+                  href={
+                    srv.slug === "hearing-care"
+                      ? "/hearing-care"
+                      : `/services/${srv.slug}`
+                  }
                   className="group flex items-start gap-1.5 text-xs text-slate-300 hover:text-gold-300 transition-colors"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-gold-500 flex-shrink-0 mt-0.5 group-hover:translate-x-0.5 transition-transform" />
@@ -115,7 +122,7 @@ export default function Footer() {
                 href="/services"
                 className="text-[11px] font-bold text-gold-400 hover:text-gold-300 inline-flex items-center gap-1"
               >
-                <span>View Full Comparison &amp; Clinical Methodologies</span>
+                <span>View All Services &amp; Clinical Methodologies</span>
                 <ChevronRight className="w-3 h-3" />
               </Link>
             </div>
@@ -199,6 +206,9 @@ export default function Footer() {
             </Link>
             <Link href="/faq" className="hover:text-gold-400 transition-colors">
               FAQ
+            </Link>
+            <Link href="/hearing-care" className="hover:text-gold-400 transition-colors">
+              Hearing Care
             </Link>
             <Link href="/teletherapy" className="hover:text-gold-400 transition-colors">
               Teletherapy

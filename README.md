@@ -1,16 +1,16 @@
-# GRACE Multidisciplinary Therapy Centre and Hearing Care
+# Grace Multi-Therapy & Hearing Care Centre
 
 > **Better Communication • Brighter Future**  
 > *Support • Develop • Empower*
 
-A complete, production-quality, responsive full-stack website for **GRACE Multidisciplinary Therapy Centre and Hearing Care**, located at Sholinganallur, Chennai.
+A complete, production-quality, responsive full-stack website for **Grace Multi-Therapy & Hearing Care Centre**, located at Sholinganallur, Chennai.
 
 ---
 
 ## 🏥 Client & Brand Information
 
-- **Brand Name**: GRACE Multidisciplinary Therapy Centre and Hearing Care
-- **Short Name**: GRACE Therapy Centre
+- **Official Brand Name**: Grace Multi-Therapy & Hearing Care Centre
+- **Short Name**: Grace Therapy Centre
 - **Tagline**: *Better Communication • Brighter Future*
 - **Core Pillars**: Support • Develop • Empower
 - **Primary Phone**: `+91 8220007614` (Click-to-call, WhatsApp integrated)

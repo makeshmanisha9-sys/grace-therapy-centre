@@ -48,7 +48,7 @@ export const FAQ_DATA: FaqItem[] = [
   },
   {
     category: "Location",
-    question: "Where is GRACE Multidisciplinary Therapy Centre located in Chennai?",
+    question: "Where is Grace Multi-Therapy & Hearing Care Centre located in Chennai?",
     answer:
       "Our centre is located at Door #174, Sai Garden, Villa A, Village High Road, Sholinganallur, Chennai, Tamil Nadu 600119. We are conveniently accessible from OMR (Old Mahabalipuram Road) and ECR. Parking and ground-level accessibility are available.",
   },

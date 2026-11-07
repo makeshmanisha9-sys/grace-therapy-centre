@@ -4,9 +4,9 @@ import { BRAND } from "@/lib/constants";
 import { Calendar, Phone, Clock, MapPin, ShieldCheck, HelpCircle } from "lucide-react";
 
 export const metadata = {
-  title: "Book an Appointment | Consultation Request",
+  title: `Book an Appointment | ${BRAND.name}`,
   description:
-    "Schedule an initial evaluation or therapy session at GRACE Multidisciplinary Therapy Centre and Hearing Care in Sholinganallur, Chennai.",
+    `Schedule an initial evaluation or therapy session at ${BRAND.name} in Sholinganallur, Chennai.`,
 };
 
 export default function AppointmentsPage() {

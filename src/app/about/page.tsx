@@ -8,95 +8,48 @@ import {
   CheckCircle2,
   Calendar,
   ArrowRight,
-  Info,
-  Clock,
   Sparkles,
   Award,
   Target,
   Compass,
-  Building,
+  Activity,
+  Smile,
+  ClipboardCheck,
 } from "lucide-react";
-import { BRAND, SERVICES } from "@/lib/constants";
+import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: "About Us | Multidisciplinary Care Philosophy & Clinical Foundation",
+  title: `About Us | ${BRAND.name}`,
   description:
-    "Learn about GRACE Multi-Therapy & Hearing Care Centre. Built on a clinical foundation of over 25 years in Speech-Language Pathology and Paediatric Rehabilitation in Sholinganallur, Chennai.",
+    "Learn about Grace Multi-Therapy & Hearing Care Centre in Sholinganallur, Chennai. Built on a clinical foundation of over 25 years of professional experience in Speech-Language Pathology and Paediatric Rehabilitation.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="py-12 sm:py-16 space-y-16 sm:space-y-24">
-      {/* Header Banner */}
+    <div className="py-10 sm:py-16 space-y-16 sm:space-y-24">
+      {/* =========================================================================
+          1. HEADER BANNER
+          ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-xs font-bold uppercase tracking-widest text-gold-700 bg-gold-50 px-3.5 py-1 rounded-full border border-gold-200">
-            About Our Centre
+            About Us
           </span>
           <h1 className="text-2xl sm:text-3xl lg:text-[34px] font-serif font-bold text-navy-950 leading-snug">
             {BRAND.headline}
           </h1>
-          <p className="text-base sm:text-lg text-charcoal-700 leading-relaxed font-serif text-gold-900">
+          <p className="text-base sm:text-lg font-medium text-gold-800 font-serif">
             {BRAND.tagline}
           </p>
-          <p className="text-sm sm:text-base text-charcoal-700 leading-relaxed max-w-2xl mx-auto">
-            Supporting individuals to grow, learn, communicate, and lead more independent and fulfilling lives. Welcoming children, families, and adults seeking specialized developmental therapy and hearing care in Sholinganallur, Chennai.
+          <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed max-w-2xl mx-auto">
+            {BRAND.brandStatement}
           </p>
         </div>
       </section>
 
-      {/* Mission & Vision Twin Cards */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Mission Card */}
-          <div className="bg-white rounded-3xl border border-ivory-border p-8 sm:p-10 shadow-card relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gold-100/40 rounded-full blur-2xl pointer-events-none" />
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-700">
-                <Target className="w-6 h-6" />
-              </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-gold-700 block">
-                Our Mission
-              </span>
-              <h2 className="text-2xl font-serif font-bold text-navy-950">
-                Compassionate, Evidence-Based Multidisciplinary Care
-              </h2>
-              <p className="text-sm text-charcoal-700 leading-relaxed">
-                {BRAND.mission}
-              </p>
-            </div>
-            <div className="pt-6 mt-6 border-t border-ivory-border flex items-center gap-2 text-xs font-semibold text-navy-900">
-              <CheckCircle2 className="w-4 h-4 text-gold-600 flex-shrink-0" />
-              <span>Nurturing potential across every developmental stage</span>
-            </div>
-          </div>
-
-          {/* Vision Card */}
-          <div className="bg-navy-950 text-white rounded-3xl border border-navy-800 p-8 sm:p-10 shadow-cardHover relative overflow-hidden flex flex-col justify-between">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gold-400/10 rounded-full blur-2xl pointer-events-none" />
-            <div className="space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-navy-900 border border-navy-700 flex items-center justify-center text-gold-400">
-                <Compass className="w-6 h-6" />
-              </div>
-              <span className="text-xs font-bold uppercase tracking-widest text-gold-400 block">
-                Our Vision
-              </span>
-              <h2 className="text-2xl font-serif font-bold text-white">
-                Better Communication • Brighter Future
-              </h2>
-              <p className="text-sm text-slate-300 leading-relaxed">
-                {BRAND.vision}
-              </p>
-            </div>
-            <div className="pt-6 mt-6 border-t border-navy-800 flex items-center gap-2 text-xs font-semibold text-gold-300">
-              <CheckCircle2 className="w-4 h-4 text-gold-400 flex-shrink-0" />
-              <span>Lifelong family partnership &amp; collaborative expertise</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Clinical Foundation: 25+ Years Story & Scope */}
+      {/* =========================================================================
+          2. ABOUT US OVERVIEW & CLINICAL FOUNDATION
+          ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl border border-ivory-border p-8 sm:p-12 shadow-card">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -104,31 +57,29 @@ export default function AboutPage() {
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-50 border border-gold-200 text-gold-800 text-xs font-bold">
                 <Award className="w-4 h-4 text-gold-600" />
-                <span>Clinical Foundation</span>
+                <span>Over 25 Years of Clinical Experience</span>
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-serif font-bold text-navy-950">
-                Over 25 Years of Clinical Foundation in Speech-Language Pathology &amp; Paediatric Rehabilitation
+                A Clinical Foundation Built on Deep Understanding &amp; Family Involvement
               </h2>
 
-              <p className="text-sm sm:text-base text-charcoal-700 leading-relaxed">
-                The clinical foundation of GRACE is anchored in more than two and a half decades of dedicated practice in Speech-Language Pathology and Paediatric Rehabilitation. This deep clinical heritage guides our diagnostic judgment, family counseling, individualized goal setting, and multidisciplinary coordination.
-              </p>
-
-              <div className="p-4 rounded-2xl bg-ivory-50 border border-ivory-border space-y-2">
-                <h3 className="font-serif font-bold text-sm text-navy-950 flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-gold-600" />
-                  <span>Comprehensive Scope: Child Development &amp; Adult Rehabilitation</span>
-                </h3>
-                <p className="text-xs text-charcoal-600 leading-relaxed">
-                  While early childhood intervention is a core pillar of our work, our clinical scope extends seamlessly to school-aged children, adolescents, and adults. From post-stroke speech recovery, aphasia, and dysarthria to cognitive retraining, adult hearing rehabilitation, and parent coaching, we support individuals across every phase of life.
+              <div className="space-y-3.5 text-xs sm:text-sm text-charcoal-700 leading-relaxed">
+                <p>
+                  At <strong className="text-navy-950">{BRAND.name}</strong>, we believe that every individual has the potential to grow, learn, communicate, and lead a more independent and fulfilling life. With the right guidance, appropriate intervention, and a supportive environment, every step forward can make a meaningful difference.
+                </p>
+                <p>
+                  With over 25 years of professional experience in Speech-Language Pathology and Paediatric Rehabilitation, our clinical foundation is built on a deep understanding of individual needs, developmental differences, communication challenges, and the importance of family involvement.
+                </p>
+                <p>
+                  Our vision extends beyond therapy sessions. We strive to create an environment where children receive the support they need to develop and thrive, adults are guided towards improving their functional abilities and independence, and families feel understood, supported, and empowered throughout their journey.
                 </p>
               </div>
 
-              {/* Core Supporting Words */}
+              {/* Core Supporting Pillars */}
               <div className="grid grid-cols-3 gap-3 pt-2">
                 {BRAND.supportingWords.map((word) => (
-                  <div key={word} className="bg-navy-50/80 p-3.5 rounded-xl border border-navy-100 text-center">
+                  <div key={word} className="bg-navy-50/80 p-3 rounded-xl border border-navy-100 text-center">
                     <span className="block text-xs font-bold text-navy-950 tracking-wider">{word}</span>
                   </div>
                 ))}
@@ -137,10 +88,10 @@ export default function AboutPage() {
 
             {/* Right Photography (5 cols) */}
             <div className="lg:col-span-5">
-              <div className="relative rounded-2xl overflow-hidden border-2 border-gold-300/60 shadow-card h-80 sm:h-96 bg-slate-100">
+              <div className="relative rounded-2xl overflow-hidden border-2 border-gold-300/60 shadow-card h-80 sm:h-[420px] bg-slate-100">
                 <Image
                   src="/images/about-multidisciplinary.jpg"
-                  alt="Multidisciplinary child development and sensory integration therapy session at GRACE Centre"
+                  alt={`Multidisciplinary therapy session at ${BRAND.name}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 500px"
                   className="object-cover"
@@ -157,157 +108,293 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Core Values */}
+      {/* =========================================================================
+          3. OUR VISION & OUR MISSION
+          ========================================================================= */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Vision Card */}
+          <div className="bg-navy-950 text-white rounded-3xl border border-navy-800 p-8 sm:p-10 shadow-cardHover relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gold-400/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-navy-900 border border-navy-700 flex items-center justify-center text-gold-400">
+                <Compass className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold uppercase tracking-widest text-gold-400 block">
+                Our Vision
+              </span>
+              <h2 className="text-2xl font-serif font-bold text-white">
+                Empowered to Communicate, Develop, and Thrive
+              </h2>
+              <p className="text-sm text-slate-300 leading-relaxed">
+                &ldquo;{BRAND.vision}&rdquo;
+              </p>
+            </div>
+            <div className="pt-6 mt-6 border-t border-navy-800 flex items-center gap-2 text-xs font-semibold text-gold-300">
+              <CheckCircle2 className="w-4 h-4 text-gold-400 flex-shrink-0" />
+              <span>Dignity, confidence, and independence for every age</span>
+            </div>
+          </div>
+
+          {/* Mission Card */}
+          <div className="bg-white rounded-3xl border border-ivory-border p-8 sm:p-10 shadow-card relative overflow-hidden flex flex-col justify-between">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gold-100/40 rounded-full blur-2xl pointer-events-none" />
+            <div className="space-y-4">
+              <div className="w-12 h-12 rounded-2xl bg-gold-50 border border-gold-200 flex items-center justify-center text-gold-700">
+                <Target className="w-6 h-6" />
+              </div>
+              <span className="text-xs font-bold uppercase tracking-widest text-gold-700 block">
+                Our Mission
+              </span>
+              <h2 className="text-2xl font-serif font-bold text-navy-950">
+                Compassionate, Individualized &amp; Evidence-Based Care
+              </h2>
+              <p className="text-sm text-charcoal-700 leading-relaxed">
+                &ldquo;{BRAND.mission}&rdquo;
+              </p>
+            </div>
+            <div className="pt-6 mt-6 border-t border-ivory-border flex items-center gap-2 text-xs font-semibold text-navy-900">
+              <CheckCircle2 className="w-4 h-4 text-gold-600 flex-shrink-0" />
+              <span>Collaborative care, family empowerment &amp; lifelong development</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          4. OUR APPROACH TO CARE (CLIENT-PROVIDED TEXT)
+          ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-3xl border border-ivory-border p-8 sm:p-12 shadow-card space-y-8">
+          <div className="max-w-3xl space-y-2">
+            <span className="text-xs font-bold uppercase tracking-widest text-gold-700 bg-gold-50 px-3.5 py-1 rounded-full border border-gold-200">
+              Clinical Philosophy
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-navy-950">
+              Our Approach to Care
+            </h2>
+            <p className="text-xs sm:text-sm text-charcoal-600">
+              Recognizing uniqueness, fostering multidisciplinary collaboration, and connecting therapy to real-life needs.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="p-6 rounded-2xl bg-ivory-50 border border-ivory-border space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold text-sm">
+                01
+              </div>
+              <h3 className="font-serif font-bold text-base text-navy-950">
+                Individualized Programmes
+              </h3>
+              <p className="text-xs text-charcoal-700 leading-relaxed">
+                We recognize that every individual is unique. Our approach focuses on understanding each person&apos;s strengths, challenges, and goals and developing individualized therapeutic programmes that address their specific needs.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-ivory-50 border border-ivory-border space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold text-sm">
+                02
+              </div>
+              <h3 className="font-serif font-bold text-base text-navy-950">
+                Multidisciplinary Support
+              </h3>
+              <p className="text-xs text-charcoal-700 leading-relaxed">
+                Through our multidisciplinary services, we aim to support communication, development, learning, behaviour, movement, hearing, and functional independence under one coordinated clinical roof.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-ivory-50 border border-ivory-border space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold text-sm">
+                03
+              </div>
+              <h3 className="font-serif font-bold text-base text-navy-950">
+                Collaborative Partnership
+              </h3>
+              <p className="text-xs text-charcoal-700 leading-relaxed">
+                We believe that meaningful progress happens when professionals work collaboratively, families are actively involved, and therapy is connected to real-life needs and everyday home routines.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-ivory-50 border border-ivory-border space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold text-sm">
+                04
+              </div>
+              <h3 className="font-serif font-bold text-base text-navy-950">
+                Group Therapy Programmes
+              </h3>
+              <p className="text-xs text-charcoal-700 leading-relaxed">
+                Our services extend beyond individual therapy to include group therapy programmes that encourage social interaction, peer communication, cooperative play, and functional learning.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-ivory-50 border border-ivory-border space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold text-sm">
+                05
+              </div>
+              <h3 className="font-serif font-bold text-base text-navy-950">
+                Parent Workshops &amp; Training
+              </h3>
+              <p className="text-xs text-charcoal-700 leading-relaxed">
+                We conduct parent workshops that equip families with practical knowledge and actionable strategies to support speech, behaviour, and development confidently in home routines.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-ivory-50 border border-ivory-border space-y-3">
+              <div className="w-10 h-10 rounded-xl bg-navy-100 text-navy-900 flex items-center justify-center font-bold text-sm">
+                06
+              </div>
+              <h3 className="font-serif font-bold text-base text-navy-950">
+                Adult Rehabilitation Services
+              </h3>
+              <p className="text-xs text-charcoal-700 leading-relaxed">
+                We also provide rehabilitation services for adults experiencing communication and functional difficulties associated with stroke, neurological conditions, and other health-related challenges, helping them work towards improved communication, participation, and independence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          5. OUR COMMITMENT (CLIENT-PROVIDED TEXT)
+          ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-r from-navy-950 via-navy-900 to-navy-950 text-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-gold-400/30 shadow-cardHover relative overflow-hidden space-y-8">
+          <div className="max-w-3xl space-y-3">
+            <span className="text-xs font-bold uppercase tracking-widest text-gold-400 bg-navy-800/80 px-3.5 py-1 rounded-full border border-gold-400/30">
+              Our Promise
+            </span>
+            <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white">
+              Our Commitment
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              At Grace, we are committed to providing individualized, ethical, and evidence-informed care in a respectful, encouraging, and supportive environment.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-6 rounded-2xl bg-navy-900/80 border border-navy-800 space-y-2.5">
+              <div className="flex items-center gap-2 text-gold-400 font-bold text-sm">
+                <Heart className="w-4 h-4 flex-shrink-0" />
+                <span>Every Milestone Matters</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                We value every achievement, recognize every individual&apos;s strengths, and understand that progress looks different for each person. Whether it is a child taking the first steps towards communication, a student developing greater independence, or an adult working towards regaining functional abilities, we believe every milestone matters.
+              </p>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-navy-900/80 border border-navy-800 space-y-2.5">
+              <div className="flex items-center gap-2 text-gold-400 font-bold text-sm">
+                <Users className="w-4 h-4 flex-shrink-0" />
+                <span>Active Family &amp; Professional Partnership</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                We work in partnership with families, caregivers, and other professionals to make therapy meaningful, practical, and relevant to everyday life.
+              </p>
+            </div>
+          </div>
+
+          <div className="pt-2 text-center">
+            <p className="text-sm font-serif font-bold text-gold-300 italic">
+              &ldquo;{BRAND.brandStatement}&rdquo;
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          6. FOUR-STEP THERAPY PROCESS
+          ========================================================================= */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-gold-700">
-            Guiding Principles
+            Care Pathway
           </span>
           <h2 className="text-2xl sm:text-3xl font-serif font-bold text-navy-950">
-            Our Core Values
+            Our Four-Step Therapy Process
           </h2>
           <p className="text-xs sm:text-sm text-charcoal-600">
-            Every clinical session, evaluation, and family conversation at GRACE is governed by these principles.
+            Transparent, milestone-focused progression tailored to individual strengths and family needs.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-2xl border border-ivory-border p-7 shadow-card space-y-3">
-            <div className="w-11 h-11 rounded-xl bg-navy-50 border border-navy-100 flex items-center justify-center text-navy-900">
-              <Heart className="w-5 h-5 text-gold-600" />
-            </div>
-            <h3 className="font-serif font-bold text-xl text-navy-950">Family-Centred Care</h3>
-            <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed">
-              Parents and caregivers are essential partners in therapy. We empower families with practical home strategies, milestone tracking, and transparent progress reviews.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-ivory-border p-7 shadow-card space-y-3">
-            <div className="w-11 h-11 rounded-xl bg-navy-50 border border-navy-100 flex items-center justify-center text-navy-900">
-              <ShieldCheck className="w-5 h-5 text-emerald-700" />
-            </div>
-            <h3 className="font-serif font-bold text-xl text-navy-950">Evidence-Based Practice</h3>
-            <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed">
-              We apply validated clinical protocols across speech pathology, sensory integration, behavioural support, physiotherapy, psychological counselling, and audiology.
-            </p>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-ivory-border p-7 shadow-card space-y-3">
-            <div className="w-11 h-11 rounded-xl bg-navy-50 border border-navy-100 flex items-center justify-center text-navy-900">
-              <Users className="w-5 h-5 text-navy-800" />
-            </div>
-            <h3 className="font-serif font-bold text-xl text-navy-950">Multidisciplinary Synergy</h3>
-            <p className="text-xs sm:text-sm text-charcoal-700 leading-relaxed">
-              Our clinicians collaborate across disciplines so that speech, sensory, occupational, educational, and cognitive strategies reinforce each other smoothly.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Multidisciplinary Clinical Disciplines Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-ivory-50 rounded-3xl border border-ivory-border p-8 sm:p-12 shadow-card">
-          <div className="max-w-3xl mb-8 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-gold-700">
-              Clinical Team &amp; Faculty
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-navy-950">
-              Our Clinical Disciplines
-            </h2>
-            <p className="text-xs sm:text-sm text-charcoal-600">
-              In accordance with our strict verification policy, we do not invent staff names or clinical claims. The profiles below represent our clinical departments and will be updated with individual clinician bios as verified during onboarding.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {SERVICES.map((srv, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            {
+              step: "01",
+              icon: ClipboardCheck,
+              title: "Assessment",
+              desc: "Comprehensive evaluation of strengths, developmental needs, and goals.",
+            },
+            {
+              step: "02",
+              icon: Target,
+              title: "Goal Setting",
+              desc: "Collaborative, measurable individualized therapeutic milestones.",
+            },
+            {
+              step: "03",
+              icon: Activity,
+              title: "Therapy",
+              desc: "Engaging, evidence-informed multidisciplinary clinical sessions.",
+            },
+            {
+              step: "04",
+              icon: Smile,
+              title: "Progress Review",
+              desc: "Regular reassessments, transparent tracking, and home guidance.",
+            },
+          ].map((item) => {
+            const IconComp = item.icon;
+            return (
               <div
-                key={srv.slug}
-                className="bg-white rounded-2xl border border-ivory-border overflow-hidden shadow-subtle flex flex-col justify-between"
+                key={item.step}
+                className="bg-white rounded-2xl border border-ivory-border p-6 shadow-subtle hover:shadow-card hover:border-gold-300 transition-all flex flex-col justify-between"
               >
-                <div>
-                  <div className="relative w-full h-36 bg-slate-100 overflow-hidden">
-                    <Image
-                      src={srv.imageUrl}
-                      alt={srv.name}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 350px"
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-navy-950/20 to-transparent" />
-                    <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-gold-400/50 to-transparent" />
-                    <span className="absolute bottom-2.5 left-3 text-[11px] font-bold text-gold-300 bg-navy-950/90 border border-gold-400/40 px-2 py-0.5 rounded shadow-sm">
-                      Discipline {String(idx + 1).padStart(2, "0")}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-serif font-bold text-gold-700">
+                      {item.step}
                     </span>
+                    <div className="w-9 h-9 rounded-xl bg-navy-50 text-navy-900 flex items-center justify-center">
+                      <IconComp className="w-4 h-4 text-gold-600" />
+                    </div>
                   </div>
-                  <div className="p-5 space-y-2">
-                    <h3 className="font-serif font-bold text-base text-navy-950">{srv.name}</h3>
-                    <p className="text-xs text-charcoal-700 leading-relaxed line-clamp-2">{srv.shortDescription}</p>
-                  </div>
-                </div>
-                <div className="p-4 pt-0 space-y-2">
-                  <div className="flex items-center gap-1.5 text-[11px] text-gold-900 font-medium bg-gold-50 p-2 rounded-lg border border-gold-200">
-                    <Info className="w-3.5 h-3.5 flex-shrink-0 text-gold-700" />
-                    <span className="truncate">Staff Profile Pending Verification — {srv.name}</span>
-                  </div>
-                  <Link
-                    href={`/services/${srv.slug}`}
-                    className="text-[11px] font-bold text-navy-900 hover:text-gold-700 inline-flex items-center gap-1 pt-1"
-                  >
-                    <span>View Clinical Scope</span>
-                    <ArrowRight className="w-3 h-3" />
-                  </Link>
+                  <h3 className="font-serif font-bold text-base text-navy-950">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-charcoal-700 leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Institutional Credentials & Referral Slip Document Note */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-3xl border border-ivory-border p-6 sm:p-8 shadow-card flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div className="space-y-1.5 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-bold text-navy-900 uppercase tracking-wider">
-              <Building className="w-4 h-4 text-gold-600" />
-              <span>Medical &amp; Clinical Referrals</span>
-            </div>
-            <h3 className="font-serif font-bold text-lg text-navy-950">
-              Doctor &amp; Paediatrician Referral Network
-            </h3>
-            <p className="text-xs text-charcoal-600 leading-relaxed">
-              We collaborate with ENT specialists, paediatricians, neurologists, and educators across Chennai. In formal medical documentation and doctor referral slips, our centre is formally referenced as <strong className="text-navy-900">GRACE MULTI-THERAPY CENTER &amp; HEARING CARE</strong>.
-            </p>
-          </div>
-          <Link
-            href="/contact"
-            className="px-6 py-3 rounded-xl bg-navy-50 hover:bg-navy-100 text-navy-900 border border-navy-200 font-bold text-xs uppercase tracking-wider whitespace-nowrap transition-colors"
-          >
-            Referral Information
-          </Link>
-        </div>
-      </section>
-
-      {/* Appointment CTA */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+      {/* =========================================================================
+          7. CTA SECTION
+          ========================================================================= */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-navy-950">
-          Partner With Our Multidisciplinary Team
+          Begin Your Journey with {BRAND.name}
         </h2>
         <p className="text-xs sm:text-sm text-charcoal-600 max-w-xl mx-auto">
-          Contact our clinical coordinator today to schedule an initial consultation, audiometric screening, or visit our centre in Sholinganallur.
+          Reach out to our clinical desk in Sholinganallur, Chennai to schedule an initial consultation or developmental screening.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
           <Link
             href="/appointments"
-            className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-navy-900 text-white font-bold text-xs uppercase tracking-wider hover:bg-navy-800 shadow-md transition-all"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-navy-900 text-white font-bold text-xs uppercase tracking-wider hover:bg-navy-800 shadow-md transition-all"
           >
-            Request Appointment
+            <Calendar className="w-4 h-4 text-gold-400" />
+            <span>Book an Appointment</span>
           </Link>
           <Link
             href="/contact"
-            className="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-slate-300 text-charcoal-800 font-semibold text-xs hover:bg-white transition-colors"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 text-charcoal-800 font-semibold text-xs hover:bg-white transition-colors"
           >
-            Get In Touch
+            <span>Contact Centre</span>
           </Link>
         </div>
       </section>
