@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import os from "os";
 import { createClient } from "@supabase/supabase-js";
 
 export type AppointmentStatus =
@@ -38,19 +39,80 @@ export interface InquiryRecord {
   createdAt: string;
 }
 
-const DATA_DIR = path.join(process.cwd(), "data");
-const APPOINTMENTS_FILE = path.join(DATA_DIR, "appointments.json");
-const INQUIRIES_FILE = path.join(DATA_DIR, "inquiries.json");
+// Global in-memory storage fallback across serverless invocations
+declare global {
+  // eslint-disable-next-line no-var
+  var __grace_appointments: AppointmentRecord[] | undefined;
+  // eslint-disable-next-line no-var
+  var __grace_inquiries: InquiryRecord[] | undefined;
+}
 
-function ensureDataFiles() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+if (!globalThis.__grace_appointments) {
+  globalThis.__grace_appointments = [];
+}
+if (!globalThis.__grace_inquiries) {
+  globalThis.__grace_inquiries = [];
+}
+
+// Resolve writable data directory (handles Vercel read-only /var/task filesystem)
+function getDataDirectory(): string {
+  // If running on Vercel or AWS Lambda, process.cwd() is read-only.
+  // os.tmpdir() (/tmp) is guaranteed to be writable.
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    const tmpDir = path.join(os.tmpdir(), "grace-data");
+    try {
+      if (!fs.existsSync(tmpDir)) {
+        fs.mkdirSync(tmpDir, { recursive: true });
+      }
+      return tmpDir;
+    } catch {
+      return os.tmpdir();
+    }
   }
-  if (!fs.existsSync(APPOINTMENTS_FILE)) {
-    fs.writeFileSync(APPOINTMENTS_FILE, JSON.stringify([], null, 2), "utf8");
+
+  // Local development fallback
+  const localDir = path.join(process.cwd(), "data");
+  try {
+    if (!fs.existsSync(localDir)) {
+      fs.mkdirSync(localDir, { recursive: true });
+    }
+    return localDir;
+  } catch {
+    // If local fails due to permission, fallback to os.tmpdir()
+    return os.tmpdir();
   }
-  if (!fs.existsSync(INQUIRIES_FILE)) {
-    fs.writeFileSync(INQUIRIES_FILE, JSON.stringify([], null, 2), "utf8");
+}
+
+function getFilePath(filename: string): string {
+  const dir = getDataDirectory();
+  return path.join(dir, filename);
+}
+
+function safeReadJson<T>(filename: string, fallback: T): T {
+  try {
+    const filePath = getFilePath(filename);
+    if (!fs.existsSync(filePath)) {
+      return fallback;
+    }
+    const raw = fs.readFileSync(filePath, "utf8");
+    if (!raw) return fallback;
+    return JSON.parse(raw) as T;
+  } catch (err) {
+    console.warn(`[storage] safeReadJson warning for ${filename}:`, err);
+    return fallback;
+  }
+}
+
+function safeWriteJson<T>(filename: string, data: T): void {
+  try {
+    const filePath = getFilePath(filename);
+    const dir = path.dirname(filePath);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf8");
+  } catch (err) {
+    console.warn(`[storage] safeWriteJson warning for ${filename} (using memory store):`, err);
   }
 }
 
@@ -61,9 +123,14 @@ function getSupabaseClient() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (url && key && url.startsWith("https://")) {
-    return createClient(url, key, {
-      auth: { persistSession: false },
-    });
+    try {
+      return createClient(url, key, {
+        auth: { persistSession: false },
+      });
+    } catch (e) {
+      console.warn("[storage] Supabase init failed:", e);
+      return null;
+    }
   }
   return null;
 }
@@ -94,6 +161,7 @@ export async function saveAppointment(
     updatedAt: now,
   };
 
+  // 1. Try Supabase cloud persistence if configured
   if (supabase) {
     try {
       const { data: inserted, error } = await supabase
@@ -109,40 +177,36 @@ export async function saveAppointment(
           preferred_time_slot: record.preferredTimeSlot,
           attendance_mode: record.attendanceMode,
           message: record.message || null,
-          status: record.status,
+          status: "Pending",
+          staff_notes: null,
+          created_at: now,
+          updated_at: now,
         })
         .select()
         .single();
 
       if (!error && inserted) {
-        return {
-          id: inserted.id,
-          requestNumber: inserted.request_number,
-          patientName: inserted.patient_name,
-          guardianName: inserted.guardian_name,
-          phone: inserted.phone,
-          email: inserted.email,
-          serviceRequested: inserted.service_requested,
-          preferredDate: inserted.preferred_date,
-          preferredTimeSlot: inserted.preferred_time_slot,
-          attendanceMode: inserted.attendance_mode,
-          message: inserted.message,
-          status: inserted.status,
-          createdAt: inserted.created_at,
-          updatedAt: inserted.updated_at,
-        };
+        record.id = inserted.id;
+        record.status = inserted.status;
       }
     } catch (e) {
-      console.warn("Supabase insertion encountered error, falling back to local persistent store:", e);
+      console.warn("[storage] Supabase insert warning:", e);
     }
   }
 
-  // Local persistent storage
-  ensureDataFiles();
-  const raw = fs.readFileSync(APPOINTMENTS_FILE, "utf8");
-  const list: AppointmentRecord[] = raw ? JSON.parse(raw) : [];
-  list.unshift(record);
-  fs.writeFileSync(APPOINTMENTS_FILE, JSON.stringify(list, null, 2), "utf8");
+  // 2. Safe in-memory store
+  if (globalThis.__grace_appointments) {
+    globalThis.__grace_appointments.unshift(record);
+  }
+
+  // 3. Safe local/temp file persistence (never throws)
+  try {
+    const diskList = safeReadJson<AppointmentRecord[]>("appointments.json", []);
+    diskList.unshift(record);
+    safeWriteJson("appointments.json", diskList);
+  } catch (err) {
+    console.warn("[storage] Disk write warning:", err);
+  }
 
   return record;
 }
@@ -169,7 +233,7 @@ export async function getAppointments(filters?: {
       }
 
       const { data, error } = await queryBuilder;
-      if (!error && data) {
+      if (!error && Array.isArray(data)) {
         return data.map((item: any) => ({
           id: item.id,
           requestNumber: item.request_number,
@@ -189,14 +253,20 @@ export async function getAppointments(filters?: {
         }));
       }
     } catch (e) {
-      console.warn("Supabase query error, fallback to local:", e);
+      console.warn("[storage] Supabase query warning:", e);
     }
   }
 
-  // Local storage query
-  ensureDataFiles();
-  const raw = fs.readFileSync(APPOINTMENTS_FILE, "utf8");
-  let list: AppointmentRecord[] = raw ? JSON.parse(raw) : [];
+  // Fallback to disk or in-memory
+  let list = safeReadJson<AppointmentRecord[]>(
+    "appointments.json",
+    globalThis.__grace_appointments || []
+  );
+
+  // Merge in-memory if disk is empty
+  if (list.length === 0 && (globalThis.__grace_appointments?.length || 0) > 0) {
+    list = globalThis.__grace_appointments || [];
+  }
 
   if (filters?.status && filters.status !== "All") {
     list = list.filter((a) => a.status === filters.status);
@@ -258,14 +328,15 @@ export async function updateAppointment(
         };
       }
     } catch (e) {
-      console.warn("Supabase update error, fallback to local:", e);
+      console.warn("[storage] Supabase update warning:", e);
     }
   }
 
-  // Local update
-  ensureDataFiles();
-  const raw = fs.readFileSync(APPOINTMENTS_FILE, "utf8");
-  const list: AppointmentRecord[] = raw ? JSON.parse(raw) : [];
+  // Safe local/temp update
+  const list = safeReadJson<AppointmentRecord[]>(
+    "appointments.json",
+    globalThis.__grace_appointments || []
+  );
   const idx = list.findIndex((a) => a.id === id || a.requestNumber === id);
   if (idx === -1) return null;
 
@@ -273,13 +344,23 @@ export async function updateAppointment(
   if (updates.staffNotes !== undefined) list[idx].staffNotes = updates.staffNotes;
   list[idx].updatedAt = now;
 
-  fs.writeFileSync(APPOINTMENTS_FILE, JSON.stringify(list, null, 2), "utf8");
+  safeWriteJson("appointments.json", list);
+  if (globalThis.__grace_appointments) {
+    const memIdx = globalThis.__grace_appointments.findIndex(
+      (a) => a.id === id || a.requestNumber === id
+    );
+    if (memIdx !== -1) {
+      globalThis.__grace_appointments[memIdx] = list[idx];
+    }
+  }
+
   return list[idx];
 }
 
 export async function saveInquiry(
   data: Omit<InquiryRecord, "id" | "status" | "createdAt">
 ): Promise<InquiryRecord> {
+  const supabase = getSupabaseClient();
   const now = new Date().toISOString();
   const record: InquiryRecord = {
     id: `inq_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
@@ -288,16 +369,82 @@ export async function saveInquiry(
     createdAt: now,
   };
 
-  ensureDataFiles();
-  const raw = fs.readFileSync(INQUIRIES_FILE, "utf8");
-  const list: InquiryRecord[] = raw ? JSON.parse(raw) : [];
-  list.unshift(record);
-  fs.writeFileSync(INQUIRIES_FILE, JSON.stringify(list, null, 2), "utf8");
+  if (supabase) {
+    try {
+      const { data: inserted, error } = await supabase
+        .from("inquiries")
+        .insert({
+          name: record.name,
+          phone: record.phone,
+          email: record.email,
+          service_interest: record.serviceInterest || null,
+          message: record.message,
+          status: "New",
+          created_at: now,
+        })
+        .select()
+        .single();
+
+      if (!error && inserted) {
+        record.id = inserted.id;
+      }
+    } catch (e) {
+      console.warn("[storage] Supabase inquiry warning:", e);
+    }
+  }
+
+  // Memory store
+  if (globalThis.__grace_inquiries) {
+    globalThis.__grace_inquiries.unshift(record);
+  }
+
+  // Safe file store
+  try {
+    const diskList = safeReadJson<InquiryRecord[]>("inquiries.json", []);
+    diskList.unshift(record);
+    safeWriteJson("inquiries.json", diskList);
+  } catch (err) {
+    console.warn("[storage] Inquiry disk write warning:", err);
+  }
+
   return record;
 }
 
 export async function getInquiries(): Promise<InquiryRecord[]> {
-  ensureDataFiles();
-  const raw = fs.readFileSync(INQUIRIES_FILE, "utf8");
-  return raw ? JSON.parse(raw) : [];
+  const supabase = getSupabaseClient();
+
+  if (supabase) {
+    try {
+      const { data, error } = await supabase
+        .from("inquiries")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (!error && Array.isArray(data)) {
+        return data.map((item: any) => ({
+          id: item.id,
+          name: item.name,
+          phone: item.phone,
+          email: item.email,
+          serviceInterest: item.service_interest,
+          message: item.message,
+          status: item.status,
+          createdAt: item.created_at,
+        }));
+      }
+    } catch (e) {
+      console.warn("[storage] Supabase getInquiries warning:", e);
+    }
+  }
+
+  const list = safeReadJson<InquiryRecord[]>(
+    "inquiries.json",
+    globalThis.__grace_inquiries || []
+  );
+
+  if (list.length === 0 && (globalThis.__grace_inquiries?.length || 0) > 0) {
+    return globalThis.__grace_inquiries || [];
+  }
+
+  return list;
 }

@@ -1,11 +1,12 @@
 import React from "react";
 import { redirect } from "next/navigation";
 import { isStaffAuthenticated } from "@/lib/auth";
-import { getAppointments, getInquiries } from "@/lib/storage";
+import { getAppointments, getInquiries, AppointmentRecord, InquiryRecord } from "@/lib/storage";
 import AdminDashboardClient from "./AdminDashboardClient";
+import { BRAND } from "@/lib/constants";
 
 export const metadata = {
-  title: "Staff Management Dashboard | GRACE Therapy Centre",
+  title: `Staff Management Dashboard | ${BRAND.name}`,
   robots: {
     index: false,
     follow: false,
@@ -19,8 +20,22 @@ export default async function AdminPage() {
     redirect("/admin/login");
   }
 
-  const appointments = await getAppointments();
-  const inquiries = await getInquiries();
+  let appointments: AppointmentRecord[] = [];
+  let inquiries: InquiryRecord[] = [];
+
+  try {
+    appointments = await getAppointments();
+  } catch (err) {
+    console.warn("[admin] Error loading appointments:", err);
+    appointments = [];
+  }
+
+  try {
+    inquiries = await getInquiries();
+  } catch (err) {
+    console.warn("[admin] Error loading inquiries:", err);
+    inquiries = [];
+  }
 
   return (
     <AdminDashboardClient
